@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>住宅事業｜丸七高橋組</title>
+<meta name="description" content="北海道斜里町の総合建設会社・丸七高橋組の住宅事業。「COZY北見」「ナチュリエ北見」を通じて、地域に寄り添うこれからの住まいづくりに取り組んでいます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+/* ===== HOUSING ページ固有 ===== */
+.hous-lead-sec { padding: 78px 0; }
+.hous-lead-txt {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 2;
+  letter-spacing: .06em;
+  color: #2b2b2b;
+}
+.hous-sec { padding: 90px 0; }
+
+/* セクション見出し＋右上リンク（EVENT/WORKS） */
+.hous-head-row {
+  position: relative;
+  margin-bottom: 44px;
+}
+.hous-head-row .sec-head { text-align: center; margin-bottom: 0; }
+.hous-head-row .more { position: absolute; right: 0; bottom: 6px; }
+
+/* EVENT カード（3枚）：白ボックス＋下にバッジ・日付・タイトル */
+.hous-events { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.hous-event { display: block; }
+.hous-event .thumb { aspect-ratio: 4/3; overflow: hidden; background: #fff; }
+.hous-event .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.hous-event:hover .thumb img { transform: scale(1.05); }
+.hous-event .badge { display: inline-block; margin-top: 16px; }
+.hous-event .date {
+  font-family: var(--en); font-weight: 700; font-size: 12px;
+  color: #333; letter-spacing: .06em; margin-top: 10px;
+}
+.hous-event .ttl {
+  font-size: 14px; font-weight: 500; line-height: 1.7;
+  margin-top: 6px; letter-spacing: .03em; color: #333;
+}
+
+/* 画像＋テキスト（HOUSINGは余白調整） */
+.hous-media { margin-top: 8px; }
+
+/* BRAND: 画像は両方とも左・小さめ／見出し=タグライン→ブランド名 */
+.hous-brand-media { display: grid; grid-template-columns: 450px 1fr; gap: 44px; align-items: start; max-width: 900px; margin-inline: auto; }
+.hous-brand-media + .hous-brand-media { margin-top: 56px; }
+.hous-brand-media .media-img img { width: 450px; height: 250px; object-fit: cover; } /* 画像 450×250px */
+.hous-brand-media .tagline { font-size: 21pt; font-weight: 700; letter-spacing: .04em; color: #2b2b2b; line-height: 1.3; }
+.hous-brand-media .brand { font-family: var(--en); font-weight: 700; font-size: 22px; letter-spacing: .06em; color: #2b2b2b; margin-top: 0; }
+.hous-brand-media .body { font-size: 13px; color: #555; margin-top: 18px; line-height: 1.55; }
+.hous-brand-media .more { margin-top: 20px; }
+
+/* WORKS カード（3枚＋左右矢印装飾） */
+.hous-works-wrap { position: relative; padding: 0 46px; }
+.hous-works { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.hous-work { display: block; text-align: center; border: 1px solid var(--line); background: #fff; }
+.hous-work .thumb { aspect-ratio: 4/3; overflow: hidden; background: #eee; }
+.hous-work .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.hous-work:hover .thumb img { transform: scale(1.05); }
+.hous-work h4 { font-size: 15px; font-weight: 700; margin-top: 18px; letter-spacing: .04em; }
+.hous-work .more { margin: 8px 0 22px; }
+.hous-works-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+  font-family: var(--en); font-weight: 300; font-size: 30px; color: #bbb; line-height: 1;
+  user-select: none;
+}
+.hous-works-arrow.prev { left: 0; }
+.hous-works-arrow.next { right: 0; }
+
+/* WORKS「その他の施工事例はこちら」 */
+.hous-works-all { text-align: center; font-size: 28px; letter-spacing: .04em; color: #333; margin: 58px 0 26px; }
+
+/* Housing Division / CONTACT / RECRUIT 枠：900×320px 中央 */
+.band-900 { width: min(900px, 100% - 48px); height: 320px; margin: 0 auto; }
+.band-link .label { display: inline-flex; flex-direction: column; align-items: center; gap: 8px; line-height: 1.1; }
+.band-link .label .jp { font-family: "Noto Sans JP", sans-serif; font-weight: 400; font-size: 12px; letter-spacing: .24em; }
+.hous-contact-box { width: min(900px, 100% - 48px); height: 200px; margin: 0 auto; }
+
+/* ACCESS：左テキスト・右マップ（全体で幅900px） */
+.hous-access { display: grid; grid-template-columns: 1fr 590px; gap: 52px; align-items: start; width: min(900px, 100% - 48px); margin: 0 auto; }
+.hous-access .map { width: 100%; height: 320px; }
+.hous-access .map iframe { display: block; width: 100%; height: 100%; border: 0; }
+
+/* ACCESS */
+.hous-access-ttl { font-size: 16px; font-weight: 700; letter-spacing: .06em; margin-bottom: 16px; }
+.hous-access-addr { font-size: 14px; color: #555; line-height: 1.95; }
+.hous-access-tel { font-size: 14px; color: #333; letter-spacing: .04em; margin-top: 22px; }
+
+@media (max-width: 767px){
+  .hous-lead-sec { padding: 50px 0 4px; }
+  .hous-lead-txt { font-size: 16px; line-height: 1.9; }
+  .hous-sec { padding: 56px 0; }
+  .hous-head-row { margin-bottom: 30px; }
+  .hous-events { grid-template-columns: 1fr; gap: 26px; }
+  .hous-brand-media { grid-template-columns: 1fr; gap: 22px; }
+  .hous-brand-media .media-img img { width: 100%; height: auto; }
+  .hous-brand-media + .hous-brand-media { margin-top: 40px; }
+  .hous-works-wrap { padding: 0; }
+  .hous-works { grid-template-columns: 1fr; gap: 26px; }
+  .hous-works-arrow { display: none; }
+  .hous-works-all { font-size: 20px; margin: 40px 0 22px; }
+  .band-900 { height: 200px; }
+  .hous-contact-box { height: auto; padding: 26px 24px; }
+  .hous-access { grid-template-columns: 1fr; gap: 24px; }
+  .hous-access .map { height: 240px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== ヘッダー ========== -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo"><img src="images/common/logo_col.svg" alt="丸七高橋組"></a>
+    <nav class="gnav">
+      <ul class="gnav-list">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="company.html">COMPANY</a></li>
+        <li><a href="construction.html">CONSTRUCTION</a></li>
+        <li><a href="housing.html">HOUSING</a></li>
+        <li><a href="works.html">WORKS</a></li>
+      </ul>
+      <div class="gnav-btns">
+        <a href="recruit.html" class="btn-pill">RECRUIT</a>
+        <a href="contact.html" class="btn-pill">CONTACT</a>
+      </div>
+      <button class="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== ドロワー ========== -->
+<div class="drawer">
+  <ul class="drawer-list">
+    <li><a href="index.html">HOME<span class="jp">ホーム</span></a></li>
+    <li><a href="company.html">COMPANY<span class="jp">会社案内</span></a></li>
+    <li><a href="construction.html">CONSTRUCTION<span class="jp">建築・土木</span></a></li>
+    <li><a href="housing.html">HOUSING<span class="jp">住宅事業</span></a></li>
+    <li><a href="works.html">WORKS<span class="jp">施工実績</span></a></li>
+    <li><a href="recruit.html">RECRUIT<span class="jp">採用情報</span></a></li>
+    <li><a href="joblist.html">JOB LIST<span class="jp">求人募集</span></a></li>
+    <li><a href="news.html">NEWS<span class="jp">お知らせ</span></a></li>
+  </ul>
+  <div class="drawer-btns">
+    <a href="recruit.html">RECRUIT</a>
+    <a href="contact.html">CONTACT</a>
+  </div>
+</div>
+
+<main>
+
+<!-- ========== ページヒーロー ========== -->
+<section class="page-hero" style="background-image:url('images/housing/housing-head.jpg')">
+  <div class="inner">
+    <p class="en">HOUSING</p>
+    <span class="jp">住宅事業</span>
+  </div>
+</section>
+
+<!-- ========== リード ========== -->
+<section class="hous-lead-sec">
+  <div class="wrap">
+    <p class="hous-lead-txt">
+      丸七高橋組では、地域に寄り添う住まいづくりを目指した<br class="br-pc">
+      住宅事業にも取り組んでいます
+    </p>
+  </div>
+</section>
+
+<!-- ========== EVENT ========== -->
+<section class="hous-sec band">
+  <div class="wrap">
+    <div class="hous-head-row">
+      <div class="sec-head">
+        <p class="en-title">EVENT</p>
+        <span class="jp-sub">イベント</span>
+      </div>
+      <a href="news.html" class="more">MORE <span class="arrow">&gt;</span></a>
+    </div>
+
+    <div class="hous-events">
+      <a href="news.html" class="hous-event">
+        <div class="thumb">
+          <img src="images/housing/event-dummy01.jpg" alt="家づくりワークショップ">
+        </div>
+        <span class="badge">EVENT</span>
+        <p class="date">2025.00.00</p>
+        <p class="ttl">【随時開催中】家づくりワークショップ</p>
+      </a>
+      <a href="news.html" class="hous-event">
+        <div class="thumb">
+          <img src="images/housing/event-dummy02.jpg" alt="Naturie いつでも家づくり相談会">
+        </div>
+        <span class="badge">EVENT</span>
+        <p class="date">2025.00.00</p>
+        <p class="ttl">【Naturie】いつでも家づくり相談会</p>
+      </a>
+      <a href="news.html" class="hous-event">
+        <div class="thumb">
+          <img src="images/housing/event-dummy03.jpg" alt="COZY いつでも家づくり相談会">
+        </div>
+        <span class="badge">NEWS</span>
+        <p class="date">2025.00.00</p>
+        <p class="ttl">【COZY】いつでも家づくり相談会</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 画像＋テキスト ========== -->
+<section class="hous-sec">
+  <div class="wrap">
+    <div class="media-row hous-media">
+      <div class="media-img"><img src="images/housing/housing02.jpg" alt="地域に寄り添う住まいづくり"></div>
+      <div class="media-txt">
+        <h3>地域に寄り添う<br class="br-pc">これからの住まいづくり</h3>
+        <p>
+          丸七高橋組の住宅事業部では、「COZY北見」と「ナチュリエ北見」<br class="br-pc">
+          を通じて、北見・オホーツクエリアの住まいづくりを行っています。家<br class="br-pc">
+          族構成や暮らし方、好みやこだわりはお客様によってさまざまです。<br class="br-pc">
+          だからこそ、一人ひとりの理想の暮らしに寄り添いながら、毎日を心<br class="br-pc">
+          地よく、自分らしく過ごせる住まいを提案。地域に根ざした住宅事業<br class="br-pc">
+          を通じて、これからの暮らしを支えています。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BRAND ========== -->
+<section class="hous-sec band">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="en-title">BRAND</p>
+      <span class="jp-sub">ブランド</span>
+    </div>
+
+    <!-- COZY -->
+    <div class="hous-brand-media">
+      <div class="media-img"><img src="images/housing/housing-plan01.jpg" alt="COZY 家は、シンプルでいい"></div>
+      <div class="media-txt">
+        <p class="tagline">家は、シンプルでいい</p>
+        <p class="brand">COZY</p>
+        <p class="body">
+          シンプルデザイン×しっかり性能<br>
+          あらかじめ基本設計されたシンプルなデザインに、確かな性能を備<br class="br-pc">
+          えた規格住宅。<br>
+          スタンダードプランは150以上。インテリアは4つのテイストをご用意<br class="br-pc">
+          しています。<br>
+          楽しんで選ぶスマートな家づくりで、ライフスタイルと好みにあった住<br class="br-pc">
+          まいが実現します。
+        </p>
+        <a href="works.html" class="more">MORE <span class="arrow">&gt;</span></a>
+      </div>
+    </div>
+
+    <!-- Naturie -->
+    <div class="hous-brand-media">
+      <div class="media-img"><img src="images/housing/housing-plan02.jpg" alt="Naturie 自然素材の家"></div>
+      <div class="media-txt">
+        <p class="tagline">自然素材の家</p>
+        <p class="brand">Naturie</p>
+        <p class="body">
+          ナチュラル＆スローな家。新しいのに懐かしくて、気持ちいい。<br>
+          家族で育てる、やさしい暮らし。<br>
+          味わいのある自然素材を使用したアンティークで「かわいい」お家。<br>
+          ムクのフローリングや梁・柱、<br>
+          調湿効果のある塗り壁や天然素材の塗料など、自然のぬくもりたっ<br class="br-pc">
+          ぷりの素材を採用しています。<br>
+          暮らすほどに愛おしい、味わいが深まる住まいをお届けします。
+        </p>
+        <a href="works.html" class="more">MORE <span class="arrow">&gt;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WORKS ========== -->
+<section class="hous-sec">
+  <div class="wrap">
+    <div class="hous-head-row">
+      <div class="sec-head">
+        <p class="en-title">WORKS</p>
+        <span class="jp-sub">施工実績</span>
+      </div>
+      <a href="works.html" class="more">ALL LIST <span class="arrow">&gt;</span></a>
+    </div>
+
+    <div class="hous-works-wrap">
+      <span class="hous-works-arrow prev" aria-hidden="true">&lsaquo;</span>
+      <div class="hous-works">
+        <a href="works.html" class="hous-work">
+          <div class="thumb"><img src="images/housing/housing-works-dummy01.jpg" alt="施工事例 name"></div>
+          <h4>name</h4>
+          <span class="more">MORE <span class="arrow">&gt;</span></span>
+        </a>
+        <a href="works.html" class="hous-work">
+          <div class="thumb"><img src="images/housing/housing-works-dummy02.jpg" alt="施工事例 name"></div>
+          <h4>name</h4>
+          <span class="more">MORE <span class="arrow">&gt;</span></span>
+        </a>
+        <a href="works.html" class="hous-work">
+          <div class="thumb"><img src="images/housing/housing-works-dummy03.jpg" alt="施工事例 name"></div>
+          <h4>name</h4>
+          <span class="more">MORE <span class="arrow">&gt;</span></span>
+        </a>
+      </div>
+      <span class="hous-works-arrow next" aria-hidden="true">&rsaquo;</span>
+    </div>
+
+    <!-- その他の施工事例 -->
+    <p class="hous-works-all">その他の施工事例はこちら</p>
+    <a href="works.html" class="band-link band-900">
+      <img src="images/housing/rainier-homes-brn.jpg" alt="Housing Division">
+      <span class="label">Housing Division<span class="jp">施工実績</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="hous-sec" style="padding-top:0;">
+  <div class="wrap">
+    <a href="contact.html" class="contact-box hous-contact-box">
+      <div class="txt">
+        <p class="en">CONTACT</p>
+        <span class="jp">お問い合わせ・資料請求</span>
+      </div>
+      <span class="arrow">&gt;</span>
+    </a>
+  </div>
+</section>
+
+<!-- ========== ACCESS（左テキスト・右マップ） ========== -->
+<section class="hous-sec" style="padding-top:0;">
+  <div class="wrap">
+    <div class="hous-access">
+      <div class="hous-access-info">
+        <p class="hous-access-ttl">北見営業所</p>
+        <p class="hous-access-addr">〒090-0834<br>北海道北見市とん田西町218番地13号 1F<br>営業時間 9:00〜17:00（日・祝休）</p>
+        <p class="hous-access-tel">TEL 0120-437-745</p>
+      </div>
+      <div class="map">
+        <iframe src="https://maps.google.com/maps?q=北海道北見市とん田西町218番地13号&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 下部 RECRUIT 枠（900×320） ========== -->
+<div class="hous-sec" style="padding:0 0 90px;">
+  <a href="recruit.html" class="band-link band-900">
+    <img src="images/housing/recruit-brn.jpg" alt="採用情報">
+    <span class="label">RECRUIT<span class="jp">採用情報</span></span>
+  </a>
+</div>
+
+</main>
+
+<!-- ========== フッター ========== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-logo"><img src="images/common/logo_wh.svg" alt="丸七高橋組"></div>
+      <div class="footer-office">
+        <p class="label">［ 本社 ］</p>
+        <p>〒099-4115<br>北海道斜里郡斜里町光陽町16番地8</p>
+        <p class="tel">0152-23-2441</p>
+      </div>
+      <div class="footer-office">
+        <p class="label">［ 北見営業所 ］</p>
+        <p>〒090-0834<br>北海道北見市とん田西町218番地13号 1F</p>
+        <p class="tel">0157-57-1533</p>
+      </div>
+    </div>
+    <div class="footer-right">
+      <nav class="footer-nav">
+        <div class="row">
+          <a href="index.html">HOME</a><a href="company.html">COMPANY</a><a href="construction.html">CONSTRUCTION</a><a href="housing.html">HOUSING</a><a href="works.html">WORKS</a>
+        </div>
+        <div class="row">
+          <a href="recruit.html">RECRUIT</a><a href="joblist.html">JOB LIST</a><a href="news.html">NEWS</a>
+        </div>
+      </nav>
+      <a href="contact.html" class="footer-contact">CONTACT</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">©MARUSHICHI TAKAHASHIGUMI CO., LTD.</p>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

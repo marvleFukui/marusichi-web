@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>求人募集｜丸七高橋組</title>
+<meta name="description" content="丸七高橋組の求人募集情報。新卒・中途、経験者・未経験を問わずスタッフを募集しています。世界自然遺産・知床でワークライフバランスを大切にした働き方を。募集要項（土木部・建築部）を掲載。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+/* ===== JOB LIST ページ固有（接頭辞 job-） ===== */
+/* 募集要項 中央大見出し（英字なし・日本語大見出し） */
+.job-sec-title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: #2b2b2b;
+  line-height: 1.2;
+  margin-bottom: 64px;
+}
+/* 各募集要項テーブルの上見出し（高校卒業：土木部 等） */
+.job-table-head {
+  text-align: center;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--navy);
+  margin-bottom: 24px;
+}
+.job-table-block + .job-table-block { margin-top: 72px; }
+/* 給与など複数手当セル内の細い注記 */
+.job-note {
+  display: block;
+  font-size: 12px;
+  color: var(--sub);
+  letter-spacing: .04em;
+  line-height: 1.7;
+  margin-top: 2px;
+}
+/* 給与セル内の小見出し行間 */
+.spec-table td .job-pay-gap { display: block; height: 14px; }
+
+/* 上部：全幅50/50交互（片側グレー地テキスト／片側フル画像） */
+.job-hero-rows { width: 100%; }
+.job-hero-row { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; min-height: 360px; }
+.job-hero-row .txt { background: var(--band); display: flex; flex-direction: column; justify-content: center; padding: 56px 64px; }
+.job-hero-row:not(.rev) .txt { align-items: flex-end; }        /* テキスト左パネル→中央寄せ */
+.job-hero-row.rev .txt { order: 2; align-items: flex-start; }  /* テキスト右パネル→中央寄せ */
+.job-hero-row .txt .inner { width: 100%; max-width: 340px; }
+.job-hero-row .txt h3 { font-size: 20px; font-weight: 700; line-height: 1.6; letter-spacing: .04em; color: #2b2b2b; }
+.job-hero-row .txt p { font-size: 13px; color: #555; margin-top: 18px; line-height: 1.9; }
+.job-hero-row .txt .more { margin-top: 24px; }
+.job-hero-row .img { overflow: hidden; }
+.job-hero-row .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+@media (max-width: 767px){
+  .job-sec-title { font-size: 26px; margin-bottom: 40px; }
+  .job-table-head { font-size: 17px; }
+  .job-table-block + .job-table-block { margin-top: 52px; }
+  .job-hero-row { grid-template-columns: 1fr; min-height: 0; }
+  .job-hero-row .txt { padding: 36px 24px; align-items: flex-start; order: 2; }
+  .job-hero-row .txt .inner { max-width: none; }
+  .job-hero-row .img { min-height: 240px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== ヘッダー ========== -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo"><img src="images/common/logo_col.svg" alt="丸七高橋組"></a>
+    <nav class="gnav">
+      <ul class="gnav-list">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="company.html">COMPANY</a></li>
+        <li><a href="construction.html">CONSTRUCTION</a></li>
+        <li><a href="housing.html">HOUSING</a></li>
+        <li><a href="works.html">WORKS</a></li>
+      </ul>
+      <div class="gnav-btns">
+        <a href="recruit.html" class="btn-pill">RECRUIT</a>
+        <a href="contact.html" class="btn-pill">CONTACT</a>
+      </div>
+      <button class="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== ドロワー ========== -->
+<div class="drawer">
+  <ul class="drawer-list">
+    <li><a href="index.html">HOME<span class="jp">ホーム</span></a></li>
+    <li><a href="company.html">COMPANY<span class="jp">会社案内</span></a></li>
+    <li><a href="construction.html">CONSTRUCTION<span class="jp">建築・土木</span></a></li>
+    <li><a href="housing.html">HOUSING<span class="jp">住宅事業</span></a></li>
+    <li><a href="works.html">WORKS<span class="jp">施工実績</span></a></li>
+    <li><a href="recruit.html">RECRUIT<span class="jp">採用情報</span></a></li>
+    <li><a href="joblist.html">JOB LIST<span class="jp">求人募集</span></a></li>
+    <li><a href="news.html">NEWS<span class="jp">お知らせ</span></a></li>
+  </ul>
+  <div class="drawer-btns">
+    <a href="recruit.html">RECRUIT</a>
+    <a href="contact.html">CONTACT</a>
+  </div>
+</div>
+
+<main>
+
+<!-- ========== ページタイトル ========== -->
+<div class="page-title">
+  <p class="en">JOB LIST</p>
+  <span class="jp">求人募集</span>
+</div>
+
+<!-- ========== リード ========== -->
+<section class="section" style="padding-top:56px;">
+  <div class="wrap">
+    <p class="page-lead strong">
+      丸七高橋組では、<br>
+      新卒・中途、経験者・未経験を問わず<br>
+      スタッフを募集しています。
+    </p>
+  </div>
+</section>
+
+<!-- ========== 画像＋テキスト 交互3ブロック ========== -->
+<section class="job-hero-rows">
+
+  <!-- 01 : テキスト左 / 画像右 -->
+  <div class="job-hero-row">
+    <div class="txt">
+      <div class="inner">
+        <h3>ワークライフバランスを<br>大切にした働き方</h3>
+        <p>仕事にまっすぐ向き合いながら、知床・道東での暮らしも楽しめる環境へ。業務時間は無理のない範囲に抑え、休日はしっかりと。住環境の相談や資格取得のサポートなど、社員一人ひとりが安心して働き続けられる体制を整えています。</p>
+        <a href="recruit.html" class="more">MORE <span class="arrow">&gt;</span></a>
+      </div>
+    </div>
+    <div class="img"><img src="images/joblist/joblist01.jpg" alt="ワークライフバランスを大切にした働き方"></div>
+  </div>
+
+  <!-- 02 : 画像左 / テキスト右 -->
+  <div class="job-hero-row rev">
+    <div class="txt">
+      <div class="inner">
+        <h3>世界自然遺産・知床で<br>心地よく働く</h3>
+        <p>世界自然遺産・知床の豊かな自然に囲まれながら、地域に必要とされる仕事に向き合う。四季の変化を身近に感じられる環境で、働く時間も、暮らす時間も、自分らしく大切にできる毎日があります。</p>
+        <a href="recruit.html" class="more">MORE <span class="arrow">&gt;</span></a>
+      </div>
+    </div>
+    <div class="img"><img src="images/joblist/joblist02.jpg" alt="世界自然遺産・知床で心地よく働く"></div>
+  </div>
+
+  <!-- 03 : テキスト左 / 画像右 -->
+  <div class="job-hero-row">
+    <div class="txt">
+      <div class="inner">
+        <h3>Iターン・Uターン<br>移住サポート</h3>
+        <p>知床・道東で新しい暮らしを始めたい方へ。Iターン・Uターンに伴う住まいや生活の不安にも寄り添い、安心して働き始められるようサポートします。地域に根ざした仕事と、自然に囲まれた暮らしを、ここから始めてみませんか。</p>
+        <a href="recruit.html" class="more">MORE <span class="arrow">&gt;</span></a>
+      </div>
+    </div>
+    <div class="img"><img src="images/joblist/joblist03.jpg" alt="Iターン・Uターン移住サポート"></div>
+  </div>
+
+</section>
+
+<!-- ========== 募集要項 ========== -->
+<section class="section">
+  <div class="w900">
+    <h2 class="job-sec-title">募集要項</h2>
+
+    <!-- 土木部 -->
+    <div class="job-table-block">
+      <h3 class="job-table-head">高校卒業：土木部</h3>
+      <table class="spec-table top-line">
+        <tr>
+          <th>募集職種</th>
+          <td>土木部</td>
+        </tr>
+        <tr>
+          <th>業務内容</th>
+          <td>現場管理者のアシスト<br>事務作業</td>
+        </tr>
+        <tr>
+          <th>給与</th>
+          <td>
+            月給　　　〔 200,000円 〕<br>
+            住宅手当　〔 20,000円 〕（単身者：自宅以外の者）<br>
+            残業手当　〔 22,335円 〕（例：月15時間残業の場合）<br>
+            家族手当　〔 配偶者 5,000円、子 2,000円 〕（該当者）<br>
+            資格手当　〔 1級〜20,000円、2級〜10,000円 〕（資格を取得した者）
+            <span class="job-note">※資格取得支援制度（会社負担）があります</span>
+            <span class="job-pay-gap"></span>
+            現場手当　〔 10,000円 〕（資格を取得し現場担当の場合）<br>
+            燃料手当　〔 支給あり 〕（年1回：11月）
+          </td>
+        </tr>
+        <tr>
+          <th>加入保険等</th>
+          <td>雇用保険、労災保険、健康保険、厚生年金、退職金共済、退職金制度（勤続3年以上）<br>定年制65歳、再雇用制度（70歳まで）</td>
+        </tr>
+        <tr>
+          <th>就業時間</th>
+          <td>7:30〜16:30（休憩60分）8時間勤務</td>
+        </tr>
+        <tr>
+          <th>週休二日制</th>
+          <td>2026年度　所定労働日数／252日（休日113日）年間所定労働時間／2,016時間
+            <span class="job-note">※ゴールデンウィーク、夏季休暇（お盆）、年末年始休暇あり、会社の年間就業カレンダーに準ずる</span>
+          </td>
+        </tr>
+        <tr>
+          <th>有給休暇</th>
+          <td>入社6ヶ月経過後10日付与</td>
+        </tr>
+        <tr>
+          <th>勤務時間</th>
+          <td>8:00〜17:30（休憩120分）1日7時間30分勤務</td>
+        </tr>
+        <tr>
+          <th>賞与</th>
+          <td>夏季賞与1ヶ月分、冬季賞与2ヶ月分</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 建築部 -->
+    <div class="job-table-block">
+      <h3 class="job-table-head">高校卒業：建築部</h3>
+      <table class="spec-table top-line">
+        <tr>
+          <th>募集職種</th>
+          <td>建築部</td>
+        </tr>
+        <tr>
+          <th>業務内容</th>
+          <td>現場管理者のアシスト<br>事務作業</td>
+        </tr>
+        <tr>
+          <th>給与</th>
+          <td>
+            月給　　　〔 200,000円 〕<br>
+            住宅手当　〔 20,000円 〕（単身者：自宅以外の者）<br>
+            残業手当　〔 22,335円 〕（例：月15時間残業の場合）<br>
+            家族手当　〔 配偶者 5,000円、子 2,000円 〕（該当者）<br>
+            資格手当　〔 1級〜20,000円、2級〜10,000円 〕（資格を取得した者）
+            <span class="job-note">※資格取得支援制度（会社負担）があります</span>
+            <span class="job-pay-gap"></span>
+            現場手当　〔 10,000円 〕（資格を取得し現場担当の場合）<br>
+            燃料手当　〔 支給あり 〕（年1回：11月）
+          </td>
+        </tr>
+        <tr>
+          <th>加入保険等</th>
+          <td>雇用保険、労災保険、健康保険、厚生年金、退職金共済、退職金制度（勤続3年以上）<br>定年制65歳、再雇用制度（70歳まで）</td>
+        </tr>
+        <tr>
+          <th>就業時間</th>
+          <td>8:00〜17:00（休憩60分）8時間勤務</td>
+        </tr>
+        <tr>
+          <th>週休二日制</th>
+          <td>2026年度　所定労働日数／252日（休日113日）年間所定労働時間／2,016時間
+            <span class="job-note">※ゴールデンウィーク、夏季休暇（お盆）、年末年始休暇あり、会社の年間就業カレンダーに準ずる</span>
+          </td>
+        </tr>
+        <tr>
+          <th>有給休暇</th>
+          <td>入社6ヶ月経過後10日付与</td>
+        </tr>
+        <tr>
+          <th>勤務時間</th>
+          <td>8:00〜17:30（休憩120分）1日7時間30分勤務</td>
+        </tr>
+        <tr>
+          <th>賞与</th>
+          <td>夏季賞与1ヶ月分、冬季賞与2ヶ月分</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== CONTACT CTA ========== -->
+<section class="section" style="padding-top:0;">
+  <div class="w900">
+    <a href="contact.html" class="contact-box">
+      <div class="txt">
+        <span class="en">CONTACT</span>
+        <span class="jp">お問い合わせ・資料請求</span>
+      </div>
+      <span class="arrow">&gt;</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ========== フッター ========== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-logo"><img src="images/common/logo_wh.svg" alt="丸七高橋組"></div>
+      <div class="footer-office">
+        <p class="label">［ 本社 ］</p>
+        <p>〒099-4115<br>北海道斜里郡斜里町光陽町16番地8</p>
+        <p class="tel">0152-23-2441</p>
+      </div>
+      <div class="footer-office">
+        <p class="label">［ 北見営業所 ］</p>
+        <p>〒090-0834<br>北海道北見市とん田西町218番地13号 1F</p>
+        <p class="tel">0157-57-1533</p>
+      </div>
+    </div>
+    <div class="footer-right">
+      <nav class="footer-nav">
+        <div class="row">
+          <a href="index.html">HOME</a><a href="company.html">COMPANY</a><a href="construction.html">CONSTRUCTION</a><a href="housing.html">HOUSING</a><a href="works.html">WORKS</a>
+        </div>
+        <div class="row">
+          <a href="recruit.html">RECRUIT</a><a href="joblist.html">JOB LIST</a><a href="news.html">NEWS</a>
+        </div>
+      </nav>
+      <a href="contact.html" class="footer-contact">CONTACT</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">©MARUSHICHI TAKAHASHIGUMI CO., LTD.</p>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

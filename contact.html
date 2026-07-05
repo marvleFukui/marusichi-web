@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ｜丸七高橋組</title>
+<meta name="description" content="北海道斜里町の総合建設会社・丸七高橋組へのお問い合わせページ。インターンシップ・就職説明会・募集・その他のお問い合わせを承ります。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+/* =========================================================
+   CONTACT ページ固有スタイル（接頭辞 cf-）
+   ========================================================= */
+/* イントロ */
+.cf-intro { text-align: center; padding: 40px 0 8px; }
+.cf-intro .cf-note { font-size: 15px; line-height: 2.0; letter-spacing: .04em; color: var(--text); }
+.cf-intro .cf-tel {
+  font-family: var(--en); font-weight: 700;
+  font-size: 34px; letter-spacing: .04em; color: #2b2b2b;
+  margin-top: 30px; line-height: 1.2;
+}
+.cf-intro .cf-hours { font-size: 12px; letter-spacing: .1em; color: var(--sub); margin-top: 8px; }
+
+/* フォーム */
+.cf-form { width: min(880px, 100% - 48px); margin: 56px auto 0; }
+.cf-row {
+  display: flex; align-items: flex-start; gap: 24px;
+  padding: 18px 0;
+}
+.cf-label {
+  flex: 0 0 200px; padding-top: 10px;
+  font-size: 14px; letter-spacing: .04em; color: #333;
+}
+.cf-label .cf-req { color: #c0392b; font-size: 12px; margin-left: 4px; }
+.cf-field { flex: 1 1 auto; min-width: 0; }
+
+/* 入力欄共通 */
+.cf-input, .cf-select, .cf-textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--text);
+  background: #fff;
+  line-height: 1.6;
+  transition: border-color .2s;
+  -webkit-appearance: none; appearance: none;
+}
+.cf-input:focus, .cf-select:focus, .cf-textarea:focus {
+  outline: none;
+  border-color: var(--navy);
+}
+.cf-input::placeholder, .cf-textarea::placeholder { color: #bbb; }
+.cf-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%23888' stroke-width='1.4' d='M1 1.5 6 6l5-4.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+.cf-textarea { resize: vertical; min-height: 180px; }
+
+/* 郵便番号行 */
+.cf-zip { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.cf-zip .cf-input { width: 96px; flex: 0 0 auto; }
+.cf-zip .cf-dash { color: #666; }
+.cf-zip-btn {
+  flex: 0 0 auto;
+  border: 0;
+  background: #9a9a9a;
+  color: #fff;
+  font-size: 13px; letter-spacing: .04em;
+  padding: 10px 20px;
+  border-radius: 2px;
+  transition: background .2s;
+}
+.cf-zip-btn:hover { background: #838383; }
+
+/* プライバシーポリシー */
+.cf-privacy {
+  height: 150px;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  padding: 16px 18px;
+  font-size: 12px;
+  line-height: 1.9;
+  color: #555;
+  background: #fff;
+}
+.cf-privacy p { margin: 0; }
+.cf-privacy p + p { margin-top: 12px; }
+.cf-privacy h4 { font-size: 12px; font-weight: 700; color: #333; margin: 14px 0 4px; }
+.cf-agree {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-top: 16px;
+  font-size: 13px; color: #333; letter-spacing: .02em;
+}
+.cf-agree input[type="checkbox"] { margin-top: 4px; width: 16px; height: 16px; flex: 0 0 auto; }
+
+/* 送信ボタン */
+.cf-submit-wrap { text-align: center; margin-top: 48px; }
+.cf-submit {
+  width: 260px; height: 52px;
+  border: 0; border-radius: 2px;
+  background: #9a9a9a;
+  color: #fff;
+  font-size: 15px; letter-spacing: .1em;
+  transition: background .2s;
+}
+.cf-submit:hover { background: #838383; }
+
+/* レスポンシブ（SP：ラベルと入力を縦積み） */
+@media (max-width: 767px){
+  .cf-intro { padding: 28px 0 6px; }
+  .cf-intro .cf-note { font-size: 13px; line-height: 1.9; }
+  .cf-intro .cf-tel { font-size: 27px; margin-top: 22px; }
+  .cf-form { width: calc(100% - 48px); margin-top: 40px; }
+  .cf-row { flex-direction: column; gap: 8px; padding: 14px 0; }
+  .cf-label { flex: none; padding-top: 0; }
+  .cf-zip .cf-input { width: 84px; }
+  .cf-submit { width: 100%; max-width: 320px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== ヘッダー ========== -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo"><img src="images/common/logo_col.svg" alt="丸七高橋組"></a>
+    <nav class="gnav">
+      <ul class="gnav-list">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="company.html">COMPANY</a></li>
+        <li><a href="construction.html">CONSTRUCTION</a></li>
+        <li><a href="housing.html">HOUSING</a></li>
+        <li><a href="works.html">WORKS</a></li>
+      </ul>
+      <div class="gnav-btns">
+        <a href="recruit.html" class="btn-pill">RECRUIT</a>
+        <a href="contact.html" class="btn-pill">CONTACT</a>
+      </div>
+      <button class="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== ドロワー ========== -->
+<div class="drawer">
+  <ul class="drawer-list">
+    <li><a href="index.html">HOME<span class="jp">ホーム</span></a></li>
+    <li><a href="company.html">COMPANY<span class="jp">会社案内</span></a></li>
+    <li><a href="construction.html">CONSTRUCTION<span class="jp">建築・土木</span></a></li>
+    <li><a href="housing.html">HOUSING<span class="jp">住宅事業</span></a></li>
+    <li><a href="works.html">WORKS<span class="jp">施工実績</span></a></li>
+    <li><a href="recruit.html">RECRUIT<span class="jp">採用情報</span></a></li>
+    <li><a href="joblist.html">JOB LIST<span class="jp">求人募集</span></a></li>
+    <li><a href="news.html">NEWS<span class="jp">お知らせ</span></a></li>
+  </ul>
+  <div class="drawer-btns">
+    <a href="recruit.html">RECRUIT</a>
+    <a href="contact.html">CONTACT</a>
+  </div>
+</div>
+
+<main>
+
+<!-- ========== ページタイトル ========== -->
+<section class="page-title">
+  <p class="en">CONTACT</p>
+  <span class="jp">お問い合わせ</span>
+</section>
+
+<!-- ========== イントロ ========== -->
+<section class="cf-intro wrap">
+  <p class="cf-note">お問い合わせには3営業日以内にご返信をいたします。<br>連絡がない場合、お手数をお掛けいたしますが、<br>お電話にてご連絡いただくようお願いいたします。</p>
+  <p class="cf-tel">000-0000-0000</p>
+  <p class="cf-hours">営業時間 ／ [平日] 10:00–19:00</p>
+</section>
+
+<!-- ========== フォーム ========== -->
+<section class="section" style="padding-top:24px;">
+  <form class="cf-form" action="#" method="post">
+
+    <div class="cf-row">
+      <label class="cf-label" for="cf-subject">件名<span class="cf-req">-必須</span></label>
+      <div class="cf-field">
+        <select class="cf-select" id="cf-subject" name="subject" required>
+          <option value="インターンシップについて">インターンシップについて</option>
+          <option value="就職説明会について">就職説明会について</option>
+          <option value="募集について">募集について</option>
+          <option value="その他お問い合わせ">その他お問い合わせ</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="cf-row">
+      <label class="cf-label" for="cf-name">氏名<span class="cf-req">-必須</span></label>
+      <div class="cf-field">
+        <input class="cf-input" type="text" id="cf-name" name="name" required>
+      </div>
+    </div>
+
+    <div class="cf-row">
+      <label class="cf-label" for="cf-kana">フリガナ<span class="cf-req">-必須</span></label>
+      <div class="cf-field">
+        <input class="cf-input" type="text" id="cf-kana" name="kana" required>
+      </div>
+    </div>
+
+    <div class="cf-row">
+      <label class="cf-label" for="cf-company">会社名</label>
+      <div class="cf-field">
+        <input class="cf-input" type="text" id="cf-company" name="company">
+      </div>
+    </div>
+
+    <div class="cf-row">
+      <label class="cf-label" for="cf-person">担当者様ご氏名</label>
+      <div class="cf-field">
+        <input class="cf-input" type="text" id="cf-person" name="person">
+      </div>
+    </div>
+
+    <div class="cf-row">
+      <label class="cf-label" for="cf-tel">お電話番号</label>
+      <div class="cf-field">
+        <input class="cf-input" type="text" id="cf-tel" name="tel">
+      </div>
+    </div>
+
+    <div class="cf-row">
+      <label class="cf-label" for="cf-email">メールアドレス<span class="cf-req">-必須</span></label>
+      <div class="cf-field">
+        <input class="cf-input" type="email" id="cf-email" name="email" required>
+      </div>
+    </div>
+
+    <div class="cf-row">
+      <label class="cf-label" for="cf-email2">メールアドレス（確認用）<span class="cf-req">-必須</span></label>
+      <div class="cf-field">
+        <input class="cf-input" type="email" id="cf-email2" name="email_confirm" required>
+      </div>
+    </div>
+
+    <div class="cf-row">
+      <label class="cf-label" for="cf-zip1">郵便番号</label>
+      <div class="cf-field">
+        <div class="cf-zip">
+          <input class="cf-input" type="text" id="cf-zip1" name="zip1" inputmode="numeric" maxlength="3">
+          <span class="cf-dash">-</span>
+          <input class="cf-input" type="text" id="cf-zip2" name="zip2" inputmode="numeric" maxlength="4">
+          <button class="cf-zip-btn" type="button">郵便番号検索</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cf-row">
+      <label class="cf-label" for="cf-pref">都道府県</label>
+      <div class="cf-field">
+        <input class="cf-input" type="text" id="cf-pref" name="pref">
+      </div>
+    </div>
+
+    <div class="cf-row">
+      <label class="cf-label" for="cf-city">市区町村</label>
+      <div class="cf-field">
+        <input class="cf-input" type="text" id="cf-city" name="city">
+      </div>
+    </div>
+
+    <div class="cf-row">
+      <label class="cf-label" for="cf-message">お問い合わせ内容<span class="cf-req">-必須</span></label>
+      <div class="cf-field">
+        <textarea class="cf-textarea" id="cf-message" name="message" required></textarea>
+      </div>
+    </div>
+
+    <div class="cf-row">
+      <label class="cf-label">プライバシーポリシー</label>
+      <div class="cf-field">
+        <div class="cf-privacy">
+          <p>〇〇株式会社（以下、「当社」という。）は、業務内に取得・使用する個人情報（お名前・電話番号・ご住所など、個人を特定できる情報。以下、「個人情報」という。）の保護のため、個人情報を保護に関する方針（以下、「本方針」という。）をもうけ、適切な運用に、必要な措置の実施およびそれらの継続的な改善に取り組みます。</p>
+          <h4>個人情報の利用目的</h4>
+          <p>当社は、個人情報を、お問合わせへの返答やサービスの提供などの業務上必要と認める範囲内で利用するものとします。</p>
+          <h4>個人情報の第三者への提供</h4>
+          <p>当社は、法令に定める場合を除き、あらかじめご本人の同意を得ることなく、個人情報を第三者に提供いたしません。</p>
+          <h4>個人情報の管理</h4>
+          <p>当社は、個人情報の正確性を保ち、これを安全に管理いたします。個人情報の紛失、破壊、改ざん及び漏えいなどを防止するため、不正アクセス、コンピュータウイルス等に対する適正な情報セキュリティ対策を講じます。</p>
+          <h4>お問い合わせ窓口</h4>
+          <p>個人情報の取扱いに関するお問い合わせ、開示・訂正・削除等のご請求につきましては、上記の連絡先までご連絡ください。</p>
+        </div>
+        <label class="cf-agree">
+          <input type="checkbox" name="agree" required>
+          <span>上記にご同意いただいた上で、左のチェックボックスにチェックを入れてください。</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="cf-submit-wrap">
+      <button class="cf-submit" type="submit">確認画面へ</button>
+    </div>
+
+  </form>
+</section>
+
+</main>
+
+<!-- ========== フッター ========== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-logo"><img src="images/common/logo_wh.svg" alt="丸七高橋組"></div>
+      <div class="footer-office">
+        <p class="label">［ 本社 ］</p>
+        <p>〒099-4115<br>北海道斜里郡斜里町光陽町16番地8</p>
+        <p class="tel">0152-23-2441</p>
+      </div>
+      <div class="footer-office">
+        <p class="label">［ 北見営業所 ］</p>
+        <p>〒090-0834<br>北海道北見市とん田西町218番地13号 1F</p>
+        <p class="tel">0157-57-1533</p>
+      </div>
+    </div>
+    <div class="footer-right">
+      <nav class="footer-nav">
+        <div class="row">
+          <a href="index.html">HOME</a><a href="company.html">COMPANY</a><a href="construction.html">CONSTRUCTION</a><a href="housing.html">HOUSING</a><a href="works.html">WORKS</a>
+        </div>
+        <div class="row">
+          <a href="recruit.html">RECRUIT</a><a href="joblist.html">JOB LIST</a><a href="news.html">NEWS</a>
+        </div>
+      </nav>
+      <a href="contact.html" class="footer-contact">CONTACT</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">©MARUSHICHI TAKAHASHIGUMI CO., LTD.</p>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
