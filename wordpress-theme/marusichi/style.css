@@ -1,0 +1,12 @@
+/*
+Theme Name: 丸七高橋組
+Theme URI: https://togu.example/
+Description: 丸七高橋組（MARUSHICHI TAKAHASHI）コーポレートサイト。静的デザインをWordPress化。施工実績(works_post)はACF PROで既存フォーマットを踏襲。
+Author: marvle
+Version: 1.0.0
+Requires at least: 6.0
+Requires PHP: 7.4
+Text Domain: marusichi
+*/
+
+/* 実スタイルは assets/css/style.css（functions.php で enqueue）。 */
