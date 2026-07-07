@@ -143,3 +143,57 @@ add_action('acf/init', function () {
         'active' => true,
     ]);
 });
+
+/**
+ * ACF フィールドグループ「求人情報」（recruit_post）
+ * 先方 acf-export-2026-07-07.json（group_647002e379cec）をキー・名称そのまま再現。
+ * 求人情報テーブル＝繰り返し（見出し＋本文）= 求人詳細の仕様表。
+ */
+add_action('acf/init', function () {
+    if (!function_exists('acf_add_local_field_group')) return;
+
+    acf_add_local_field_group([
+        'key'   => 'group_647002e379cec',
+        'title' => '求人情報',
+        'fields' => [
+            [
+                'key'          => 'field_64700314e66f2',
+                'label'        => '求人情報テーブル',
+                'name'         => '求人情報テーブル',
+                'type'         => 'repeater',
+                'instructions' => '「見出し」＝項目名（例：募集職種／給与 など）、「本文」＝その内容。求人詳細ページに表として表示されます。',
+                'required'     => 0,
+                'min'          => 1,
+                'max'          => 0,
+                'layout'       => 'table',
+                'button_label' => '行を追加',
+                'sub_fields'   => [
+                    [
+                        'key'   => 'field_64700330ed1e5',
+                        'label' => '求人情報テーブル（見出し）',
+                        'name'  => '求人情報テーブル（見出し）',
+                        'type'  => 'text',
+                    ],
+                    [
+                        'key'       => 'field_6470033ced1e6',
+                        'label'     => '求人情報テーブル（本文）',
+                        'name'      => '求人情報テーブル（本文）',
+                        'type'      => 'textarea',
+                        'rows'      => 3,
+                        'new_lines' => 'br',
+                    ],
+                ],
+            ],
+        ],
+        'location' => [
+            [
+                ['param' => 'post_type', 'operator' => '==', 'value' => 'recruit_post'],
+            ],
+        ],
+        'menu_order'    => 0,
+        'position'      => 'normal',
+        'style'         => 'default',
+        'label_placement' => 'top',
+        'active'        => true,
+    ]);
+});

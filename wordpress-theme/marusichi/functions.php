@@ -78,6 +78,43 @@ add_action('init', function () {
             'rewrite'           => ['slug' => 'works/' . str_replace('jisseki_cat_', 'cat-', $slug), 'with_front' => false],
         ]);
     }
+
+    // ---------- 求人情報（recruit_post） ＝ RECRUIT INFO 用 ----------
+    register_post_type('recruit_post', [
+        'label'         => '求人情報',
+        'labels'        => [
+            'name'          => '求人情報',
+            'singular_name' => '求人情報',
+            'add_new'       => '新規追加',
+            'add_new_item'  => '新規求人情報を追加',
+            'edit_item'     => '求人情報を編集',
+            'all_items'     => '求人情報一覧',
+            'menu_name'     => '求人情報',
+        ],
+        'public'        => true,
+        'has_archive'   => true,
+        'menu_position' => 6,
+        'menu_icon'     => 'dashicons-id',
+        'supports'      => ['title', 'editor', 'thumbnail'],
+        'rewrite'       => ['slug' => 'jobinfo', 'with_front' => false],
+        'show_in_rest'  => false, // クラシックエディタ
+    ]);
+
+    // 求人カテゴリー（チェックボックスUI）
+    register_taxonomy('recruit_cat', 'recruit_post', [
+        'label'             => '求人カテゴリー',
+        'labels'            => [
+            'name'          => '求人カテゴリー',
+            'singular_name' => '求人カテゴリー',
+            'all_items'     => '求人カテゴリー一覧',
+            'add_new_item'  => '新規求人カテゴリーを追加',
+            'menu_name'     => '求人カテゴリー',
+        ],
+        'hierarchical'      => true,
+        'public'            => true,
+        'show_admin_column' => true,
+        'rewrite'           => ['slug' => 'jobinfo/cat', 'with_front' => false],
+    ]);
 });
 
 /* ---------- 実績カテゴリーの初期ターム（A=業態: 土木/建築、B=実行内容: 4区分） ---------- */
@@ -96,9 +133,19 @@ add_action('init', function () {
     update_option('marusichi_jisseki_seeded', 1);
 }, 20);
 
-/* ---------- クラシックエディタ（施工実績・NEWS投稿） ---------- */
+/* ---------- 求人カテゴリーの初期ターム（新卒/中途/説明会/インターンシップ） ---------- */
+add_action('init', function () {
+    if (get_option('marusichi_recruit_seeded')) return;
+    if (!taxonomy_exists('recruit_cat')) return;
+    foreach (['新卒', '中途', '説明会', 'インターンシップ'] as $t) {
+        if (!term_exists($t, 'recruit_cat')) wp_insert_term($t, 'recruit_cat');
+    }
+    update_option('marusichi_recruit_seeded', 1);
+}, 20);
+
+/* ---------- クラシックエディタ（施工実績・求人情報・NEWS投稿） ---------- */
 add_filter('use_block_editor_for_post_type', function ($use, $type) {
-    if (in_array($type, ['works_post', 'post'], true)) return false;
+    if (in_array($type, ['works_post', 'recruit_post', 'post'], true)) return false;
     return $use;
 }, 10, 2);
 
@@ -116,6 +163,13 @@ function marusichi_works_query($n = 6, $args = []) {
 function marusichi_news_query($n = 3, $args = []) {
     return new WP_Query(array_merge([
         'post_type'      => 'post',
+        'posts_per_page' => $n,
+        'no_found_rows'  => true,
+    ], $args));
+}
+function marusichi_recruit_query($n = 3, $args = []) {
+    return new WP_Query(array_merge([
+        'post_type'      => 'recruit_post',
         'posts_per_page' => $n,
         'no_found_rows'  => true,
     ], $args));
