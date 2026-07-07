@@ -51,8 +51,12 @@
     var frame = modal.querySelector(".movie-modal-frame");
     function openModal(id) {
       if (!id) return;
-      frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id +
-        '?autoplay=1&rel=0" title="movie" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';
+      // origin を明示（動的挿入iframeのエラー153＝リファラ設定エラー対策）
+      var src = "https://www.youtube.com/embed/" + id +
+        "?autoplay=1&rel=0&playsinline=1&enablejsapi=1&origin=" +
+        encodeURIComponent(location.origin);
+      frame.innerHTML = '<iframe src="' + src +
+        '" title="movie" frameborder="0" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>';
       document.body.classList.add("movie-open");
     }
     function closeModal() {

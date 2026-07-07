@@ -34,6 +34,7 @@
 .rec-about-txt p { font-size: 14px; color: #555; margin-top: 20px; line-height: 1.95; }
 
 /* ピラミッド図（CSS） */
+.rec-pyramid-img { display: block; width: 100%; max-width: 420px; height: auto; margin: 0 auto; }
 .rec-pyramid { max-width: 380px; margin: 0 auto; }
 .rec-pyr-top { position: relative; display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 10px; }
 .rec-tri {
@@ -113,16 +114,8 @@
 
 /* 採用実績校の見出し（中央） */
 .rec-sec-ttl { text-align: center; font-size: 30px; font-weight: 700; letter-spacing: .04em; color: #2b2b2b; margin-bottom: 40px; }
-/* JOB LIST ボタン（実績校の下・中央） */
-.rec-joblist-cta { text-align: center; margin-top: 48px; }
-.rec-joblist-btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 18px;
-  min-width: 300px; height: 60px; padding: 0 40px;
-  background: var(--navy); color: #fff;
-  font-family: var(--en); font-weight: 700; font-size: 15px; letter-spacing: .1em;
-}
-.rec-joblist-btn:hover { opacity: 1; background: var(--navy-d); }
-.rec-joblist-btn .chev { font-family: var(--en); font-weight: 300; font-size: 20px; }
+/* JOB LIST ボタン（実績校の下・CONTACTと同一デザイン=contact-box） */
+.rec-joblist-cta { margin-top: 48px; }
 
 @media (max-width: 767px){
   .rec-lead-ttl { font-size: 20px; }
@@ -246,18 +239,7 @@
     <p class="rec-sec-ttl">丸七高橋組について</p>
     <div class="rec-about">
       <div class="rec-about-card">
-        <div class="rec-pyramid">
-          <div class="rec-pyr-top">
-            <div class="rec-tri"><span class="dot"></span></div>
-            <div class="rec-pyr-callout">
-              <span class="line"></span>
-              <span class="rec-pyr-logo"><img src="images/common/logo_col.svg" alt="MARUSHICHI TAKAHASHI"></span>
-            </div>
-          </div>
-          <p class="rec-tri-label">ゼネラルコントラクター</p>
-          <div class="rec-trap mid">工務店<br>リフォーム会社 等</div>
-          <div class="rec-trap bot">個人事業主（職人）</div>
-        </div>
+        <img class="rec-pyramid-img" src="images/recruit/takahashizu.png" alt="丸七高橋組はゼネラルコントラクター。工務店・リフォーム会社、個人事業主（職人）を束ねる立場を示す図">
       </div>
       <div class="rec-about-txt">
         <h3>下請け企業をたばねる<br>ゼネラルコントラクター</h3>
@@ -403,7 +385,13 @@
       </tbody>
     </table>
     <div class="rec-joblist-cta">
-      <a href="joblist.html" class="rec-joblist-btn">JOB LIST<span class="chev">&gt;</span></a>
+      <a href="joblist.html" class="contact-box">
+        <div class="txt">
+          <span class="en">JOB LIST</span>
+          <span class="jp">求人募集</span>
+        </div>
+        <span class="arrow">&gt;</span>
+      </a>
     </div>
   </div>
 </section>

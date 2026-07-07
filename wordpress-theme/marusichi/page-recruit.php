@@ -58,18 +58,7 @@ $img = get_template_directory_uri() . '/images';
     <p class="rec-sec-ttl">丸七高橋組について</p>
     <div class="rec-about">
       <div class="rec-about-card">
-        <div class="rec-pyramid">
-          <div class="rec-pyr-top">
-            <div class="rec-tri"><span class="dot"></span></div>
-            <div class="rec-pyr-callout">
-              <span class="line"></span>
-              <span class="rec-pyr-logo"><img src="<?php echo $img; ?>/common/logo_col.svg" alt="MARUSHICHI TAKAHASHI"></span>
-            </div>
-          </div>
-          <p class="rec-tri-label">ゼネラルコントラクター</p>
-          <div class="rec-trap mid">工務店<br>リフォーム会社 等</div>
-          <div class="rec-trap bot">個人事業主（職人）</div>
-        </div>
+        <img class="rec-pyramid-img" src="<?php echo $img; ?>/recruit/takahashizu.png" alt="丸七高橋組はゼネラルコントラクター。工務店・リフォーム会社、個人事業主（職人）を束ねる立場を示す図">
       </div>
       <div class="rec-about-txt">
         <h3>下請け企業をたばねる<br>ゼネラルコントラクター</h3>
@@ -215,7 +204,13 @@ $img = get_template_directory_uri() . '/images';
       </tbody>
     </table>
     <div class="rec-joblist-cta">
-      <a href="<?php echo esc_url(home_url('/joblist/')); ?>" class="rec-joblist-btn">JOB LIST<span class="chev">&gt;</span></a>
+      <a href="<?php echo esc_url(home_url('/joblist/')); ?>" class="contact-box">
+        <div class="txt">
+          <span class="en">JOB LIST</span>
+          <span class="jp">求人募集</span>
+        </div>
+        <span class="arrow">&gt;</span>
+      </a>
     </div>
   </div>
 </section>
