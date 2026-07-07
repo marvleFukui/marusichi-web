@@ -136,3 +136,70 @@ function marusichi_work_images($post_id) {
     }
     return $ids; // 添付ファイルIDの配列
 }
+
+/* ---------- 構造化データ（JSON-LD）: フロントページに出力 ---------- */
+function marusichi_jsonld() {
+    if (!is_front_page()) return;
+    $home = home_url('/');
+    $logo = get_template_directory_uri() . '/images/common/logo_col.svg';
+    $data = [
+        '@context' => 'https://schema.org',
+        '@graph'   => [
+            [
+                '@type'         => 'GeneralContractor',
+                '@id'           => $home . '#organization',
+                'name'          => '株式会社丸七高橋組',
+                'alternateName' => 'MARUSHICHI TAKAHASHI',
+                'url'           => $home,
+                'logo'          => $logo,
+                'image'         => $logo,
+                'description'   => '北海道斜里町の総合建設会社。建築・土木工事から注文住宅まで、知床・道東エリアで地域の暮らしを支えるゼネラルコントラクターです。',
+                'telephone'     => '+81-152-23-2441',
+                'faxNumber'     => '+81-152-23-3052',
+                'foundingDate'  => '1958-05',
+                'founder'       => ['@type' => 'Person', 'name' => '高橋七郎'],
+                'address'       => [
+                    '@type'           => 'PostalAddress',
+                    'postalCode'      => '099-4115',
+                    'addressRegion'   => '北海道',
+                    'addressLocality' => '斜里郡斜里町',
+                    'streetAddress'   => '光陽町16番地8',
+                    'addressCountry'  => 'JP',
+                ],
+                'areaServed' => ['@type' => 'AdministrativeArea', 'name' => '北海道オホーツク・知床エリア'],
+                'openingHoursSpecification' => [[
+                    '@type'     => 'OpeningHoursSpecification',
+                    'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                    'opens'     => '08:00',
+                    'closes'    => '17:00',
+                ]],
+                'sameAs'     => ['https://www.instagram.com/marushichi_takahashi/'],
+                'department' => [[
+                    '@type'     => 'GeneralContractor',
+                    'name'      => '株式会社丸七高橋組 北見営業所',
+                    'telephone' => '+81-157-57-1533',
+                    'address'   => [
+                        '@type'           => 'PostalAddress',
+                        'postalCode'      => '090-0834',
+                        'addressRegion'   => '北海道',
+                        'addressLocality' => '北見市',
+                        'streetAddress'   => 'とん田西町218番地13号 1F',
+                        'addressCountry'  => 'JP',
+                    ],
+                ]],
+            ],
+            [
+                '@type'      => 'WebSite',
+                '@id'        => $home . '#website',
+                'url'        => $home,
+                'name'       => '株式会社丸七高橋組',
+                'inLanguage' => 'ja',
+                'publisher'  => ['@id' => $home . '#organization'],
+            ],
+        ],
+    ];
+    echo "\n<script type=\"application/ld+json\">\n"
+        . wp_json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)
+        . "\n</script>\n";
+}
+add_action('wp_head', 'marusichi_jsonld');

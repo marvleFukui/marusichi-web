@@ -43,7 +43,7 @@ $img = get_template_directory_uri() . '/images';
 <section class="section">
   <div class="w900">
     <div class="recruit-cta">
-      <a href="#" data-link="recruit-site">新卒採用はこちら<span class="chev">&gt;</span></a>
+      <a href="<?php echo esc_url(home_url('/joblist/')); ?>">新卒採用はこちら<span class="chev">&gt;</span></a>
       <a href="#" data-link="recruit-site">中途採用はこちら<span class="chev">&gt;</span></a>
     </div>
   </div>

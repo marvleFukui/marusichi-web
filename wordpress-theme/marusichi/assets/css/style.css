@@ -407,10 +407,11 @@ body.movie-open .movie-modal { display: flex; }
 /* ムービーボックス（16:9＋再生ボタン） */
 .movie-box { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #111; }
 .movie-box img { width: 100%; height: 100%; object-fit: cover; }
+/* 動画サムネ画像に再生ボタンが焼き込まれているため、CSSの再生マークは非表示（SPで二重・ズレ防止） */
 .movie-box .play {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
   width: 74px; height: 74px; border-radius: 50%; background: rgba(255,255,255,.9);
-  display: flex; align-items: center; justify-content: center;
+  display: none; align-items: center; justify-content: center;
 }
 .movie-box .play::before { content: ""; border-left: 20px solid var(--navy); border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px; }
 

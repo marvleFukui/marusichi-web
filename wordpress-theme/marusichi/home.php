@@ -30,7 +30,7 @@ $img = get_template_directory_uri() . '/images';
               <?php if ($thumb) : ?>
                 <img src="<?php echo esc_url($thumb); ?>" alt="">
               <?php else : ?>
-                <span class="nw-logo"><img src="<?php echo esc_url($img); ?>/common/logo_col.svg" alt="丸七高橋組"></span>
+                <img src="<?php echo esc_url($img); ?>/news/news-list-dummy1.jpg" alt="丸七高橋組">
               <?php endif; ?>
             </div>
             <div>
