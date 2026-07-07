@@ -1226,3 +1226,9 @@ body.movie-open .movie-modal { display: flex; }
   .job-block-ttl { font-size: 20px; }
   .job-entry-btn { min-width: 0; width: 100%; max-width: 320px; }
 }
+
+/* エントリー（応募）フォームの性別ラジオ ※WordPress専用 */
+.cf-radio { display: flex; align-items: center; gap: 28px; padding-top: 10px; }
+.cf-radio label { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: #333; cursor: pointer; }
+.cf-radio input[type="radio"] { width: 16px; height: 16px; }
+@media (max-width: 767px){ .cf-radio { padding-top: 2px; } }

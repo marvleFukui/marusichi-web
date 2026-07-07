@@ -40,7 +40,7 @@ $jobs = get_posts([
           $rows  = function_exists('get_field') ? (get_field('求人情報テーブル', $job->ID) ?: []) : [];
           $terms = get_the_terms($job->ID, 'recruit_cat');
           $cat   = (!is_wp_error($terms) && $terms) ? $terms[0]->name : '';
-          $entry = add_query_arg('recruit', (int) $job->ID, home_url('/contact/')); // ※専用応募フォーム(/entry/)ができたら差し替え
+          $entry = add_query_arg('recruit', (int) $job->ID, home_url('/entry/')); // 応募専用フォーム(/entry/固定ページ)へ。募集要項を自動プリセット
       ?>
       <div class="job-block" id="job-<?php echo (int) $job->ID; ?>">
         <?php if ($cat) : ?><span class="news-cat job-block-cat"><?php echo esc_html($cat); ?></span><?php endif; ?>
