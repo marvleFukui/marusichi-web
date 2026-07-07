@@ -66,20 +66,20 @@
 - Smash Balloon を有効化し、Instagramアカウントを連携。
 - front-page.php 内に **`[instagram-feed]`** を設置済み。フィードのカラム数を **5列**程度に設定するとデザインに近づきます。
 
-## 9. フォーム（Contact Form 7）＝ CONTACT と ENTRY
-`page-contact.php`（お問い合わせ）と `page-entry.php`（応募）は、**CF7フォームを「タイトル名」で自動埋め込み**します（テンプレ側の `marusichi_cf7('お問い合わせ' / 'エントリー')`）。ショートコードの手貼りは不要。
+## 9. フォーム（MW WP Form）＝ CONTACT と ENTRY
+このサイトは **MW WP Form** を使用（参考 nv_web_format と同じ。ショートコード `[mwform_formkey key="番号"]`）。`page-contact.php`・`page-entry.php` は**固定ページ本文（the_content）を描画**するので、**各固定ページの本文にMW WP Formのショートコードを貼る**だけで表示されます。
 
-1. **Contact Form 7 を有効化**。
-2. 「お問い合わせ → コンタクトフォーム → 新規追加」で**2つ**作成：
-   - タイトル **「お問い合わせ」** … テーマ同梱 **`contact-form-cf7.txt`** の【フォーム】【メール】を貼り付け。
-   - タイトル **「エントリー」** … テーマ同梱 **`entry-form-cf7.txt`** の【フォーム】【メール】を貼り付け。
-   - ※タイトルは**完全一致**（違うと `/contact/`・`/entry/` にフォームが出ません）。
-3. 各フォームの【メール】タブで**送信先アドレス**を実際のものに変更。
-4. フォームは丸七デザイン（`.cf-*`）で表示されます（各タグに `class:cf-input` 等を付与済み）。
-- **メールアドレス（確認用）の一致チェック**は `functions.php`（`marusichi_cf7_email_confirm`）で自動対応。
-- ENTRYの「募集要項」欄は、求人一覧のENTRYボタン（`/entry/?recruit=ID`）から来ると**求人名が自動入力**（テンプレJS。CF7側フィールド名は `job`）。
-- **郵便番号→住所 自動入力**：フォームの「住所自動入力」ボタンで zipcloud API から都道府県・市区町村を自動入力（main.js、追加設定不要）。
-- **送信後のサンクスページ**：送信完了（`wpcf7mailsent`）で自動遷移。CONTACT→`/thanks/`、ENTRY→`/entry-thanks/`。上記の固定ページ（slug=`thanks`・`entry-thanks`）を作成しておくこと。遷移先は各テンプレの `.cf-form` の `data-thanks` で指定済み（`home_url()`基準なのでサブディレクトリ設置でも自動対応）。
+1. **MW WP Form を有効化**し、フォームを作成（または既存を利用）。
+   - 例：応募フォーム＝**key `1111`**（件名／募集要項／氏名／フリガナ／性別／生年月日／電話／メール(確認用)／郵便番号／都道府県／市町村／資格／志望動機／同意）。
+2. 固定ページの本文にショートコードを貼り付け：
+   - **お問い合わせ**（slug=contact）→ お問い合わせ用フォームの `[mwform_formkey key="◯◯"]`
+   - **エントリー**（slug=entry）→ `[mwform_formkey key="1111"]`
+3. フォームは丸七デザインで表示（`.mw_wp_form .inquiry dt/dd` 等を `style.css` で調整済み）。
+4. **完了画面（サンクス）**：MW WP Form の各フォーム設定「**完了画面URL**」に、CONTACT＝`/thanks/`、ENTRY＝`/entry-thanks/` を指定（本テーマに両ページ同梱。§3で固定ページ `thanks`・`entry-thanks` を作成）。
+- **募集要項の自動入力**：求人一覧のENTRYボタン（`/entry/?recruit=ID`）から来ると、テンプレJSがMW WP Formの **`募集要項`** 欄に求人名を自動入力（フィールド名が `募集要項` の前提）。
+- **郵便番号→住所**：MW WP Form標準の **zipaddr**（`zipaddrx.js`）で自動入力される想定（参考フォームに内蔵）。テーマ側の `.cf-zip-btn`＋zipcloud は静的HTMLフォーム用の予備。
+- 確認画面・メール送信・自動返信・バリデーションは **MW WP Form 側の設定**で行う。
+- （参考）CF7を使う場合の定義 `contact-form-cf7.txt` / `entry-form-cf7.txt` とヘルパ `marusichi_cf7()` も同梱（現状は未使用）。
 
 ## 10. 本番へ移行
 - **All-in-One WP Migration** でテスト→本番へエクスポート/インポート（URL自動置換）。

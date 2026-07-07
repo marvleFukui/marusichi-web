@@ -1287,3 +1287,53 @@ body.movie-open .movie-modal { display: flex; }
   .cf-thanks-body { font-size: 14px; line-height: 1.9; }
   .cf-thanks-btn { width: 100%; max-width: 320px; min-width: 0; }
 }
+
+/* =========================================================
+   MW WP Form（[mwform_formkey]）と丸七デザインの調整 ※WordPress専用
+   参考フォームの構造：<div class="mw_wp_form"><dl class="inquiry"><dt>ラベル</dt><dd class="box">項目</dd>…
+   ========================================================= */
+.mw_wp_form { max-width: 880px; margin: 0 auto; }
+.mw_wp_form .inquiry { display: grid; grid-template-columns: 200px 1fr; gap: 6px 24px; align-items: start; }
+.mw_wp_form .inquiry dt { padding-top: 12px; font-size: 14px; font-weight: 400; color: #333; letter-spacing: .04em; }
+.mw_wp_form .inquiry dt .red { color: #c0392b; font-size: 12px; margin-left: 4px; }
+.mw_wp_form .inquiry dd { margin: 0; padding: 8px 0; }
+/* 入力欄 */
+.mw_wp_form input[type="text"],
+.mw_wp_form input[type="email"],
+.mw_wp_form input[type="tel"],
+.mw_wp_form input[type="number"],
+.mw_wp_form textarea,
+.mw_wp_form select {
+  width: 100%; border: 1px solid var(--line); border-radius: 2px;
+  padding: 12px 14px; font-family: inherit; font-size: 15px; color: var(--text);
+  background: #fff; line-height: 1.6; -webkit-appearance: none; appearance: none;
+}
+.mw_wp_form select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%23888' stroke-width='1.4' d='M1 1.5 6 6l5-4.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer;
+}
+.mw_wp_form input:focus, .mw_wp_form textarea:focus, .mw_wp_form select:focus { outline: none; border-color: var(--navy); }
+.mw_wp_form textarea { min-height: 160px; resize: vertical; }
+/* 電話番号（3分割） */
+.mw_wp_form .mwform-tel-field input { width: 90px; display: inline-block; }
+/* ラジオ／チェックボックス */
+.mw_wp_form .mwform-radio-field, .mw_wp_form .mwform-checkbox-field { display: inline-flex; align-items: center; gap: 8px; margin: 6px 28px 6px 0; }
+.mw_wp_form input[type="radio"], .mw_wp_form input[type="checkbox"] { width: 16px; height: 16px; }
+/* エラー表示 */
+.mw_wp_form .error { color: #c0392b; font-size: 12px; margin-top: 6px; display: block; }
+/* ボタン（確認/送信/戻る） */
+.mw_wp_form .button_area, .mw_wp_form .btn_area, .mw_wp_form .mw_wp_form_btn { text-align: center; margin-top: 44px; }
+.mw_wp_form input[type="submit"], .mw_wp_form button[type="submit"], .mw_wp_form button {
+  min-width: 240px; height: 52px; margin: 6px; border: 0; border-radius: 2px;
+  background: var(--navy); color: #fff; font-size: 15px; letter-spacing: .1em; cursor: pointer; transition: background .2s;
+}
+.mw_wp_form input[type="submit"]:hover, .mw_wp_form button:hover { background: var(--navy-d); opacity: 1; }
+.mw_wp_form input[name="submitBack"], .mw_wp_form .backButton { background: #9a9a9a; }
+.mw_wp_form input[name="submitBack"]:hover, .mw_wp_form .backButton:hover { background: #838383; }
+/* 確認画面 */
+.mw_wp_form_confirm .inquiry dd { padding-top: 12px; }
+@media (max-width: 767px){
+  .mw_wp_form .inquiry { grid-template-columns: 1fr; gap: 2px; }
+  .mw_wp_form .inquiry dt { padding-top: 14px; }
+  .mw_wp_form input[type="submit"], .mw_wp_form button { width: 100%; max-width: 320px; min-width: 0; }
+}
