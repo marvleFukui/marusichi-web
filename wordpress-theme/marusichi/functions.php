@@ -266,14 +266,24 @@ function marusichi_cf7($title) {
     $forms = get_posts([
         'post_type'      => 'wpcf7_contact_form',
         'posts_per_page' => -1,
-        'post_status'    => 'publish',
+        'post_status'    => 'any',
     ]);
+    $want = trim($title);
+    $partial = null;
     foreach ($forms as $f) {
-        if ($f->post_title === $title) {
+        $t = trim($f->post_title);
+        if ($t === $want) {                                   // 完全一致（前後空白は無視）
             return do_shortcode('[contact-form-7 id="' . $f->ID . '"]');
         }
+        if ($partial === null && ($t !== '') &&               // 部分一致フォールバック
+            (mb_strpos($t, $want) !== false || mb_strpos($want, $t) !== false)) {
+            $partial = $f;
+        }
     }
-    return '<p class="cf-noform">「' . esc_html($title) . '」フォームが見つかりません。Contact Form 7 で同名フォームを作成してください。</p>';
+    if ($partial) {
+        return do_shortcode('[contact-form-7 id="' . $partial->ID . '"]');
+    }
+    return '<p class="cf-noform">「' . esc_html($title) . '」フォームが見つかりません。Contact Form 7 で「' . esc_html($title) . '」という名前のフォームを作成してください。</p>';
 }
 
 /* ---------- CF7：メールアドレス（確認用）の一致チェック ---------- */
