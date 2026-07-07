@@ -45,7 +45,7 @@ $img = get_template_directory_uri() . '/images';
       <p class="en-title">CORPORATE MOVIE</p>
       <span class="jp-sub">企業イメージムービー</span>
     </div>
-    <a href="<?php echo esc_url(home_url('/recruit/')); ?>" class="movie-box" aria-label="企業イメージムービーを再生">
+    <a href="#" class="movie-box" data-movie="gjFNEufrs6M" aria-label="企業イメージムービーを再生">
       <img src="<?php echo $img; ?>/recruit/recruit-movie-btn.jpg" alt="企業イメージムービー">
       <span class="play"></span>
     </a>
