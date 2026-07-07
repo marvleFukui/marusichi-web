@@ -70,7 +70,7 @@ $img = get_template_directory_uri() . '/images';
       <li class="news-row">
         <span class="news-cat"><?php echo esc_html($cat); ?></span>
         <span class="news-date"><?php echo esc_html(get_the_date('Y.m.d')); ?></span>
-        <a href="<?php the_permalink(); ?>" class="news-ttl"><?php the_title(); ?></a>
+        <a href="<?php echo esc_url(get_post_type_archive_link('recruit_post') . '#job-' . get_the_ID()); ?>" class="news-ttl"><?php the_title(); ?></a>
       </li>
       <?php endwhile; wp_reset_postdata(); else : ?>
       <li class="news-row"><span class="news-cat">RECRUIT</span><span class="news-date">-</span><span class="news-ttl">求人情報は準備中です。</span></li>

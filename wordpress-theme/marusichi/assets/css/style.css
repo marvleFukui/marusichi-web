@@ -1193,3 +1193,36 @@ body.movie-open .movie-modal { display: flex; }
 .rec-detail-head h1 { font-size: 26px; font-weight: 700; line-height: 1.5; letter-spacing: .04em; color: #2b2b2b; }
 .rec-detail-table { margin-top: 24px; }
 @media (max-width: 767px){ .rec-detail-head h1 { font-size: 21px; } }
+
+/* =========================================================
+   求人情報 一覧（archive-recruit_post ＝ /jobinfo/）※WordPress専用
+   参考tmpl_recruitの構造を丸七デザインで再現
+   ========================================================= */
+.job-switch { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 64px; }
+.job-switch-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 220px; padding: 13px 26px;
+  border: 1px solid var(--navy); color: var(--navy);
+  font-family: var(--en); font-weight: 700; font-size: 14px; letter-spacing: .04em;
+}
+.job-switch-btn:hover { background: var(--navy); color: #fff; opacity: 1; }
+.job-block { margin-bottom: 80px; scroll-margin-top: 90px; text-align: center; }
+.job-block-cat { display: inline-block; margin-bottom: 14px; }
+.job-block-ttl { font-size: 24px; font-weight: 700; color: var(--navy); letter-spacing: .06em; line-height: 1.5; margin-bottom: 28px; }
+.job-block .spec-table { text-align: left; }
+.job-entry { margin-top: 36px; }
+.job-entry-btn {
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  min-width: 280px; padding: 16px 44px;
+  background: var(--navy); color: #fff;
+}
+.job-entry-btn:hover { background: var(--navy-d); opacity: 1; }
+.job-entry-btn .b { font-family: var(--en); font-weight: 700; font-size: 17px; letter-spacing: .12em; }
+.job-entry-btn .s { font-size: 11px; letter-spacing: .1em; }
+@media (max-width: 767px){
+  .job-switch { gap: 8px; margin-bottom: 44px; }
+  .job-switch-btn { min-width: 0; flex: 1 0 46%; padding: 11px 14px; font-size: 13px; }
+  .job-block { margin-bottom: 56px; }
+  .job-block-ttl { font-size: 20px; }
+  .job-entry-btn { min-width: 0; width: 100%; max-width: 320px; }
+}
