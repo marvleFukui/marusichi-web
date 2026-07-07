@@ -1264,3 +1264,26 @@ body.movie-open .movie-modal { display: flex; }
 .cf-submit-wrap .wpcf7-spinner { margin: 14px auto 0; display: block; }
 .cf-noform { text-align: center; color: #999; padding: 48px 0; }
 @media (max-width: 767px){ .cf-submit-wrap input.cf-submit { width: 100%; max-width: 320px; } }
+
+/* =========================================================
+   サンクスページ（page-thanks / page-entry-thanks）※WordPress専用
+   ========================================================= */
+.cf-thanks { text-align: center; max-width: 720px; }
+.cf-thanks-ttl { font-size: 22px; font-weight: 700; color: var(--navy); letter-spacing: .04em; line-height: 1.6; margin-bottom: 28px; }
+.cf-thanks-body { font-size: 15px; line-height: 2.0; color: #444; }
+.cf-thanks-btns { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 44px; }
+.cf-thanks-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 240px; height: 56px; margin-top: 44px;
+  background: var(--navy); color: #fff;
+  font-family: var(--en); font-weight: 700; font-size: 14px; letter-spacing: .1em;
+}
+.cf-thanks-btns .cf-thanks-btn { margin-top: 0; }
+.cf-thanks-btn:hover { background: var(--navy-d); opacity: 1; }
+.cf-thanks-btn.ghost { background: #fff; color: var(--navy); border: 1px solid var(--navy); }
+.cf-thanks-btn.ghost:hover { background: var(--navy); color: #fff; }
+@media (max-width: 767px){
+  .cf-thanks-ttl { font-size: 19px; }
+  .cf-thanks-body { font-size: 14px; line-height: 1.9; }
+  .cf-thanks-btn { width: 100%; max-width: 320px; min-width: 0; }
+}

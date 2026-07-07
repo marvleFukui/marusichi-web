@@ -20,7 +20,7 @@ $img = get_template_directory_uri() . '/images';
 
 <!-- ========== フォーム ========== -->
 <section class="section" style="padding-top:24px;">
-  <div class="cf-form">
+  <div class="cf-form" data-thanks="<?php echo esc_url(home_url('/thanks/')); ?>">
     <?php echo marusichi_cf7('お問い合わせ'); ?>
   </div>
 </section>

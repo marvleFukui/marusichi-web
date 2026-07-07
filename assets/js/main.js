@@ -104,4 +104,40 @@
       });
     });
   }
+
+  /* ---------- 郵便番号 → 住所 自動入力（zipcloud API） ---------- */
+  document.querySelectorAll(".cf-zip-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var form = btn.closest("form") || document;
+      var z1 = form.querySelector('[name="zip1"]');
+      var z2 = form.querySelector('[name="zip2"]');
+      var zip = (((z1 && z1.value) || "") + ((z2 && z2.value) || "")).replace(/[^0-9]/g, "");
+      if (zip.length !== 7) { alert("郵便番号を7桁で入力してください。"); return; }
+      var orig = btn.textContent;
+      btn.disabled = true; btn.textContent = "検索中…";
+      fetch("https://zipcloud.ibsnet.co.jp/api/search?zipcode=" + zip)
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d && d.results && d.results[0]) {
+            var r0 = d.results[0];
+            var pref = form.querySelector('[name="pref"]');
+            var city = form.querySelector('[name="city"]');
+            if (pref) pref.value = r0.address1;
+            if (city) city.value = r0.address2 + r0.address3;
+          } else {
+            alert("該当する住所が見つかりませんでした。");
+          }
+        })
+        .catch(function () { alert("住所の取得に失敗しました。時間をおいて再度お試しください。"); })
+        .then(function () { btn.disabled = false; btn.textContent = orig; });
+    });
+  });
+
+  /* ---------- CF7 送信完了 → サンクスページへ遷移 ---------- */
+  document.addEventListener("wpcf7mailsent", function (e) {
+    var box = (e.target && e.target.closest && e.target.closest("[data-thanks]")) ||
+      document.querySelector("[data-thanks]");
+    var url = box && box.getAttribute("data-thanks");
+    if (url) location.href = url;
+  });
 })();

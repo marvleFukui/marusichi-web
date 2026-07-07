@@ -27,6 +27,8 @@
 | 求人募集 | `joblist` | page-joblist.php |
 | お問い合わせ | `contact` | page-contact.php |
 | エントリー（応募） | `entry` | page-entry.php |
+| サンクス（お問い合わせ） | `thanks` | page-thanks.php |
+| サンクス（応募） | `entry-thanks` | page-entry-thanks.php |
 | お知らせ | `news` | home.php（NEWS一覧） |
 
 ## 4. 表示設定（設定 → 表示設定）
@@ -76,7 +78,8 @@
 4. フォームは丸七デザイン（`.cf-*`）で表示されます（各タグに `class:cf-input` 等を付与済み）。
 - **メールアドレス（確認用）の一致チェック**は `functions.php`（`marusichi_cf7_email_confirm`）で自動対応。
 - ENTRYの「募集要項」欄は、求人一覧のENTRYボタン（`/entry/?recruit=ID`）から来ると**求人名が自動入力**（テンプレJS。CF7側フィールド名は `job`）。
-- 郵便番号→住所の自動入力ボタンは未実装（必要なら別途プラグイン/JSで対応）。
+- **郵便番号→住所 自動入力**：フォームの「住所自動入力」ボタンで zipcloud API から都道府県・市区町村を自動入力（main.js、追加設定不要）。
+- **送信後のサンクスページ**：送信完了（`wpcf7mailsent`）で自動遷移。CONTACT→`/thanks/`、ENTRY→`/entry-thanks/`。上記の固定ページ（slug=`thanks`・`entry-thanks`）を作成しておくこと。遷移先は各テンプレの `.cf-form` の `data-thanks` で指定済み（`home_url()`基準なのでサブディレクトリ設置でも自動対応）。
 
 ## 10. 本番へ移行
 - **All-in-One WP Migration** でテスト→本番へエクスポート/インポート（URL自動置換）。

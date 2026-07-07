@@ -59,7 +59,7 @@
 
 <div class="cf-row">
   <label class="cf-label">郵便番号</label>
-  <div class="cf-field"><div class="cf-zip">[text zip1 class:cf-input] <span class="cf-dash">-</span> [text zip2 class:cf-input]</div></div>
+  <div class="cf-field"><div class="cf-zip">[text zip1 class:cf-input] <span class="cf-dash">-</span> [text zip2 class:cf-input] <button type="button" class="cf-zip-btn">住所自動入力</button></div></div>
 </div>
 
 <div class="cf-row">

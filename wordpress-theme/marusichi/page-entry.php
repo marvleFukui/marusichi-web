@@ -22,7 +22,7 @@ if (isset($_GET['recruit'])) {
 
 <!-- ========== フォーム ========== -->
 <section class="section" style="padding-top:24px;">
-  <div class="cf-form">
+  <div class="cf-form" data-thanks="<?php echo esc_url(home_url('/entry-thanks/')); ?>">
     <?php echo marusichi_cf7('エントリー'); ?>
   </div>
 </section>
