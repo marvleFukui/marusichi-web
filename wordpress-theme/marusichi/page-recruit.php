@@ -31,9 +31,21 @@ $img = get_template_directory_uri() . '/images';
       <a href="<?php echo esc_url(home_url('/news/')); ?>" class="more">MORE <span class="arrow">&gt;</span></a>
     </div>
     <ul class="news-list rec-info-list">
-      <li class="news-row"><span class="news-cat">NEWS</span><span class="news-date">2026.00.00</span><span class="news-ttl">新卒採用を対象とした募集を開始しました</span></li>
-      <li class="news-row"><span class="news-cat">BLOG</span><span class="news-date">2026.00.00</span><span class="news-ttl">北見工業高校の生徒さんがインターンシップへ</span></li>
-      <li class="news-row"><span class="news-cat">BLOG</span><span class="news-date">2026.00.00</span><span class="news-ttl">北海道斜里高等学校にて就職説明会を行いました</span></li>
+      <?php
+      $q = marusichi_news_query(3);
+      if ($q->have_posts()) :
+          while ($q->have_posts()) : $q->the_post();
+              $cats = get_the_category();
+              $cat  = $cats ? $cats[0]->name : 'NEWS';
+      ?>
+      <li class="news-row">
+        <span class="news-cat"><?php echo esc_html($cat); ?></span>
+        <span class="news-date"><?php echo esc_html(get_the_date('Y.m.d')); ?></span>
+        <a href="<?php the_permalink(); ?>" class="news-ttl"><?php the_title(); ?></a>
+      </li>
+      <?php endwhile; wp_reset_postdata(); else : ?>
+      <li class="news-row"><span class="news-cat">NEWS</span><span class="news-date">-</span><span class="news-ttl">お知らせは準備中です。</span></li>
+      <?php endif; ?>
     </ul>
   </div>
 </section>
