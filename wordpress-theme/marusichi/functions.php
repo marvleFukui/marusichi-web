@@ -257,3 +257,36 @@ function marusichi_jsonld() {
         . "\n</script>\n";
 }
 add_action('wp_head', 'marusichi_jsonld');
+
+/* ---------- Contact Form 7：タイトル名でフォームを埋め込むヘルパ ---------- */
+function marusichi_cf7($title) {
+    if (!shortcode_exists('contact-form-7')) {
+        return '<p class="cf-noform">フォームを準備中です。（Contact Form 7 を有効化し、「' . esc_html($title) . '」という名前のフォームを作成してください）</p>';
+    }
+    $forms = get_posts([
+        'post_type'      => 'wpcf7_contact_form',
+        'posts_per_page' => -1,
+        'post_status'    => 'publish',
+    ]);
+    foreach ($forms as $f) {
+        if ($f->post_title === $title) {
+            return do_shortcode('[contact-form-7 id="' . $f->ID . '"]');
+        }
+    }
+    return '<p class="cf-noform">「' . esc_html($title) . '」フォームが見つかりません。Contact Form 7 で同名フォームを作成してください。</p>';
+}
+
+/* ---------- CF7：メールアドレス（確認用）の一致チェック ---------- */
+function marusichi_cf7_email_confirm($result, $tag) {
+    $name = is_object($tag) ? $tag->name : (isset($tag['name']) ? $tag['name'] : '');
+    if ($name === 'email-confirm') {
+        $email   = isset($_POST['email']) ? trim(wp_unslash($_POST['email'])) : '';
+        $confirm = isset($_POST['email-confirm']) ? trim(wp_unslash($_POST['email-confirm'])) : '';
+        if ($email !== '' && $email !== $confirm) {
+            $result->invalidate($tag, 'メールアドレスが一致しません。');
+        }
+    }
+    return $result;
+}
+add_filter('wpcf7_validate_email*', 'marusichi_cf7_email_confirm', 20, 2);
+add_filter('wpcf7_validate_email', 'marusichi_cf7_email_confirm', 20, 2);

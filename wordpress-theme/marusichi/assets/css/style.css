@@ -1232,3 +1232,35 @@ body.movie-open .movie-modal { display: flex; }
 .cf-radio label { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: #333; cursor: pointer; }
 .cf-radio input[type="radio"] { width: 16px; height: 16px; }
 @media (max-width: 767px){ .cf-radio { padding-top: 2px; } }
+
+/* =========================================================
+   Contact Form 7 と丸七フォームデザインの調整 ※WordPress専用
+   （CF7フォーム内は .cf-row/.cf-label/.cf-field 構造＋各タグに class:cf-input 等）
+   ========================================================= */
+.cf-form form.wpcf7-form { width: 100%; }
+.cf-field .wpcf7-form-control-wrap { display: block; width: 100%; }
+.cf-field .wpcf7-form-control-wrap .cf-input,
+.cf-field .wpcf7-form-control-wrap .cf-select,
+.cf-field .wpcf7-form-control-wrap .cf-textarea { width: 100%; }
+/* 郵便番号（横並び） */
+.cf-zip .wpcf7-form-control-wrap { display: inline-block; width: auto; }
+.cf-zip .wpcf7-form-control-wrap .cf-input { width: 96px; }
+/* 性別ラジオ（CF7 [radio]） */
+.cf-radio .wpcf7-form-control-wrap { display: inline; }
+.cf-radio .wpcf7-radio { display: inline-flex; gap: 28px; }
+.cf-radio .wpcf7-list-item { margin: 0; }
+.cf-radio .wpcf7-list-item label { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+/* 同意チェック（CF7 [acceptance]） */
+.cf-agree .wpcf7-form-control-wrap { display: block; }
+.cf-agree .wpcf7-list-item { margin: 0; }
+.cf-agree .wpcf7-list-item label { display: inline-flex; align-items: flex-start; gap: 10px; }
+.cf-agree .wpcf7-list-item-label { font-size: 13px; color: #333; line-height: 1.6; }
+/* 検証メッセージ */
+.wpcf7-not-valid-tip { color: #c0392b; font-size: 12px; margin-top: 6px; display: block; }
+.wpcf7 .wpcf7-not-valid { border-color: #c0392b !important; }
+.wpcf7-response-output { margin: 24px auto 0 !important; max-width: 880px; padding: 14px 18px; font-size: 13px; border-radius: 2px; }
+/* 送信ボタン */
+.cf-submit-wrap input.cf-submit { width: 260px; }
+.cf-submit-wrap .wpcf7-spinner { margin: 14px auto 0; display: block; }
+.cf-noform { text-align: center; color: #999; padding: 48px 0; }
+@media (max-width: 767px){ .cf-submit-wrap input.cf-submit { width: 100%; max-width: 320px; } }
