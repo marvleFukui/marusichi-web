@@ -1350,3 +1350,15 @@ body.movie-open .movie-modal { display: flex; }
   .cf-form .inquiry dt { padding-top: 14px; }
   .cf-form input[type="submit"], .cf-form button, .cf-form .wpcf7-submit { width: 100%; max-width: 320px; min-width: 0; }
 }
+
+/* プライバシーポリシーのボックス化（フォーム側 .pp 対応）※WordPress専用 */
+.cf-form .pp {
+  height: 220px; overflow-y: auto;
+  border: 1px solid var(--line); padding: 16px 18px;
+  font-size: 12px; line-height: 1.9; color: #555; background: #fff;
+}
+.cf-form .pp p { margin: 0; }
+.cf-form .pp p + p { margin-top: 12px; }
+.cf-form .pp ul { margin: 6px 0; padding-left: 0; }
+.cf-form .pp li { list-style: none; }
+.cf-form .pp li p { margin: 0; }

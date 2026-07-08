@@ -140,4 +140,13 @@
     var url = box && box.getAttribute("data-thanks");
     if (url) location.href = url;
   });
+
+  /* ---------- プライバシーポリシー内の会社名プレースホルダを補正 ---------- */
+  document.querySelectorAll(".cf-form .pp, .cf-privacy").forEach(function (box) {
+    var h = box.innerHTML;
+    var fixed = h
+      .replace(/○+\s*（会社名）\s*[.．。]?/, "株式会社 丸七高橋組")
+      .replace(/株式会社\s*○+/, "株式会社 丸七高橋組");
+    if (fixed !== h) box.innerHTML = fixed;
+  });
 })();
