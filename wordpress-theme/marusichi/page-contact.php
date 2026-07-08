@@ -20,14 +20,14 @@ $img = get_template_directory_uri() . '/images';
 
 <!-- ========== フォーム ========== -->
 <section class="section" style="padding-top:24px;">
-  <div class="cf-form">
+  <div class="cf-form" data-thanks="<?php echo esc_url(home_url('/thanks/')); ?>">
     <?php
-    // 固定ページ本文に貼った MW WP Form 等のショートコードを描画
+    // 固定ページ本文に貼った CF7 / MW WP Form 等のショートコードを描画
     while (have_posts()) : the_post();
       if (trim(get_the_content()) !== '') :
         the_content();
       else : ?>
-        <p class="cf-noform">フォームを設置してください。<br>この固定ページ（お問い合わせ）の本文に、MW WP Form のショートコード <code>[mwform_formkey key="番号"]</code> を貼り付けてください。</p>
+        <p class="cf-noform">フォームを設置してください。<br>この固定ページ（お問い合わせ）の本文に、フォームのショートコード（CF7＝<code>[contact-form-7 ...]</code> / MW WP Form＝<code>[mwform_formkey key="番号"]</code>）を貼り付けてください。</p>
       <?php endif;
     endwhile;
     ?>

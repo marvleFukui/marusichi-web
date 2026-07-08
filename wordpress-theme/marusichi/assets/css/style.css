@@ -1362,3 +1362,11 @@ body.movie-open .movie-modal { display: flex; }
 .cf-form .pp ul { margin: 6px 0; padding-left: 0; }
 .cf-form .pp li { list-style: none; }
 .cf-form .pp li p { margin: 0; }
+
+/* 郵便番号レイアウト（ENTRY=.zip_flex 単一 / CONTACT=.post_number_flex 分割）※WordPress専用 */
+.cf-form .zip_flex, .cf-form .post_number_flex { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cf-form .zip_flex .code01, .cf-form .zip_flex .code02,
+.cf-form .post_number_flex .code01, .cf-form .post_number_flex .code02,
+.cf-form .zip_flex p, .cf-form .post_number_flex p { margin: 0; }
+.cf-form .zip_flex input, .cf-form .post_number_flex input { width: 200px; max-width: 200px; }
+.cf-form .post_number_flex input { width: 140px; max-width: 140px; }
