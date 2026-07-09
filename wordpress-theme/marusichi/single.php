@@ -30,8 +30,9 @@ get_header();
         </div>
 
         <div class="post-nav" style="margin-top:56px;">
+          <?php $news_url = get_option('page_for_posts') ? get_permalink(get_option('page_for_posts')) : home_url('/news/'); ?>
           <span><?php previous_post_link('%link', '&lsaquo;&nbsp;前の記事'); ?></span>
-          <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>">リストに戻る</a>
+          <a href="<?php echo esc_url($news_url); ?>">リストに戻る</a>
           <span><?php next_post_link('%link', '次の記事&nbsp;&rsaquo;'); ?></span>
         </div>
         <?php endwhile; ?>

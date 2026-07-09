@@ -300,3 +300,12 @@ function marusichi_cf7_email_confirm($result, $tag) {
 }
 add_filter('wpcf7_validate_email*', 'marusichi_cf7_email_confirm', 20, 2);
 add_filter('wpcf7_validate_email', 'marusichi_cf7_email_confirm', 20, 2);
+
+/* ---------- COMPANY / RECRUIT はコンテンツ最大幅900px（bodyにis-w900付与） ---------- */
+add_filter('body_class', function ($classes) {
+    if (is_page('company') || is_page('recruit')
+        || is_page_template('page-company.php') || is_page_template('page-recruit.php')) {
+        $classes[] = 'is-w900';
+    }
+    return $classes;
+});

@@ -615,7 +615,7 @@ body.movie-open .movie-modal { display: flex; }
 /* ---------- company.html ---------- */
 /* ========== COMPANY ページ固有スタイル ========== */
 /* ページ内コンテンツの最大幅を900pxに統一（ヒーロー/ヘッダー/フッターは除く） */
-.wrap { max-width: 900px; }
+.is-w900 .wrap { max-width: 900px; }
 .company-lead-sec { padding: 84px 0 0; }
 .company-lead-sec .page-lead .head {
   font-size: 26px; font-weight: 700; line-height: 1.7;
@@ -836,7 +836,7 @@ body.movie-open .movie-modal { display: flex; }
 /* ========== RECRUIT ページ固有スタイル（接頭辞 rec-） ========== */
 
 /* ページ内コンテンツの最大幅を900pxに統一（ヒーロー/ヘッダー/フッターは除く） */
-.wrap { max-width: 900px; }
+.is-w900 .wrap { max-width: 900px; }
 
 /* 中央リード見出し */
 .rec-lead-ttl { text-align: center; font-size: 26px; font-weight: 700; letter-spacing: .05em; line-height: 1.6; color: #2b2b2b; }
