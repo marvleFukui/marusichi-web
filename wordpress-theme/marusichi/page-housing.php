@@ -31,34 +31,39 @@ $img = get_template_directory_uri() . '/images';
         <p class="en-title">EVENT</p>
         <span class="jp-sub">イベント</span>
       </div>
-      <a href="<?php echo esc_url(home_url('/news/')); ?>" class="more">MORE <span class="arrow">&gt;</span></a>
+      <?php $ev_archive = get_post_type_archive_link('xo_event'); ?>
+      <a href="<?php echo esc_url($ev_archive ? $ev_archive : home_url('/news/')); ?>" class="more">MORE <span class="arrow">&gt;</span></a>
     </div>
 
     <div class="hous-events">
-      <a href="<?php echo esc_url(home_url('/news/')); ?>" class="hous-event">
+      <?php
+      // イベント（xo_event カスタム投稿）の最新3件に連動
+      $ev = new WP_Query([
+          'post_type'      => 'xo_event',
+          'posts_per_page' => 3,
+          'no_found_rows'  => true,
+      ]);
+      if ($ev->have_posts()) :
+          while ($ev->have_posts()) : $ev->the_post();
+              $terms = get_the_terms(get_the_ID(), 'xo_event_cat');
+              $badge = (!is_wp_error($terms) && $terms) ? $terms[0]->name : 'EVENT';
+              $thumb = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+      ?>
+      <a href="<?php the_permalink(); ?>" class="hous-event">
         <div class="thumb">
-          <img src="<?php echo $img; ?>/housing/event-dummy01.jpg" alt="家づくりワークショップ">
+          <?php if ($thumb) : ?>
+            <img src="<?php echo esc_url($thumb); ?>" alt="">
+          <?php else : ?>
+            <img src="<?php echo $img; ?>/news/news-list-dummy1.jpg" alt="丸七高橋組">
+          <?php endif; ?>
         </div>
-        <span class="badge">EVENT</span>
-        <p class="date">2025.00.00</p>
-        <p class="ttl">【随時開催中】家づくりワークショップ</p>
+        <span class="badge"><?php echo esc_html($badge); ?></span>
+        <p class="date"><?php echo esc_html(get_the_date('Y.m.d')); ?></p>
+        <p class="ttl"><?php the_title(); ?></p>
       </a>
-      <a href="<?php echo esc_url(home_url('/news/')); ?>" class="hous-event">
-        <div class="thumb">
-          <img src="<?php echo $img; ?>/housing/event-dummy02.jpg" alt="Naturie いつでも家づくり相談会">
-        </div>
-        <span class="badge">EVENT</span>
-        <p class="date">2025.00.00</p>
-        <p class="ttl">【Naturie】いつでも家づくり相談会</p>
-      </a>
-      <a href="<?php echo esc_url(home_url('/news/')); ?>" class="hous-event">
-        <div class="thumb">
-          <img src="<?php echo $img; ?>/housing/event-dummy03.jpg" alt="COZY いつでも家づくり相談会">
-        </div>
-        <span class="badge">NEWS</span>
-        <p class="date">2025.00.00</p>
-        <p class="ttl">【COZY】いつでも家づくり相談会</p>
-      </a>
+      <?php endwhile; wp_reset_postdata(); else : ?>
+      <p style="padding:10px 4px;color:#666;">イベントは準備中です。</p>
+      <?php endif; ?>
     </div>
   </div>
 </section>
