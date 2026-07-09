@@ -1,8 +1,8 @@
 <?php
 /**
  * Template Name: NEWS一覧（tmpl_news）
- * 参考(niveau)から移行した「お知らせ」固定ページが _wp_page_template=tmpl_news.php を
- * 参照しているため、当テーマにも同名テンプレを用意。NEWS(投稿)一覧をデザイン表示する。
+ * 参考(niveau)から移行した「お知らせ」固定ページが _wp_page_template=template/tmpl_news.php を
+ * 参照しているため、当テーマにも同パスで用意。NEWS(投稿)一覧をデザイン表示する。
  * ※「設定→表示設定→投稿ページ＝お知らせ」にすると home.php でも同じ表示になります。
  */
 if (!defined('ABSPATH')) exit;

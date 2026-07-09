@@ -456,11 +456,12 @@ body.movie-open .movie-modal { display: flex; }
 .archives .mo a { display: block; font-size: 12px; color: #666; padding: 4px 0 4px 14px; }
 
 /* WORKS グリッド（3列カード） */
-.works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 26px; }
+.works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 26px; align-items: start; }
 .work-card .thumb { aspect-ratio: 4/3; overflow: hidden; }
 .work-card .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
 .work-card:hover .thumb img { transform: scale(1.05); }
-.work-card .meta { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; gap: 10px; }
+/* タイトルが可変長でも崩れないよう縦積み（タイトル→READ MORE） */
+.work-card .meta { display: flex; flex-direction: column; align-items: flex-start; margin-top: 14px; gap: 8px; }
 .work-card .meta .ttl { font-size: 13.5px; color: #333; line-height: 1.6; }
 .work-card .meta .read { font-family: var(--en); font-weight: 700; font-size: 10px; letter-spacing: .1em; color: #333; white-space: nowrap; }
 
