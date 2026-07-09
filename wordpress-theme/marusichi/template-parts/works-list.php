@@ -7,9 +7,15 @@ if (!defined('ABSPATH')) exit;
 
 $termA = get_terms(['taxonomy' => 'jisseki_cat_a', 'hide_empty' => false]);
 $termB = get_terms(['taxonomy' => 'jisseki_cat_b', 'hide_empty' => false]);
-$cur   = is_tax() ? get_queried_object() : null;
-$cur_id = $cur ? (int) $cur->term_id : 0;
 $all   = get_post_type_archive_link('works_post');
+// 日本語スラッグ＋入れ子リライトだと /works/cat-a/…/ が404になるため、
+// 絞り込みは query パラメータ（?jisseki_cat_a=slug）方式で堅牢化
+$cur_a = isset($_GET['jisseki_cat_a']) ? sanitize_text_field(wp_unslash($_GET['jisseki_cat_a'])) : '';
+$cur_b = isset($_GET['jisseki_cat_b']) ? sanitize_text_field(wp_unslash($_GET['jisseki_cat_b'])) : '';
+// pretty な分類アーカイブ（taxonomy.php）で来た場合も現在タームを反映
+if (is_tax('jisseki_cat_a')) { $cur_a = get_queried_object()->slug; }
+if (is_tax('jisseki_cat_b')) { $cur_b = get_queried_object()->slug; }
+$is_all = ($cur_a === '' && $cur_b === '');
 ?>
 
 <div class="page-title">
@@ -26,18 +32,18 @@ $all   = get_post_type_archive_link('works_post');
         <div class="side-block filter">
           <h3>業態</h3>
           <div class="side-links">
-            <a href="<?php echo esc_url($all); ?>"<?php echo !$cur ? ' class="is-active"' : ''; ?>>ALL</a>
+            <a href="<?php echo esc_url($all); ?>"<?php echo $is_all ? ' class="is-active"' : ''; ?>>ALL</a>
             <?php foreach ($termA as $t) : ?>
-              <a href="<?php echo esc_url(get_term_link($t)); ?>"<?php echo ($cur_id === (int)$t->term_id) ? ' class="is-active"' : ''; ?>><?php echo esc_html($t->name); ?></a>
+              <a href="<?php echo esc_url(add_query_arg('jisseki_cat_a', $t->slug, $all)); ?>"<?php echo ($cur_a === $t->slug) ? ' class="is-active"' : ''; ?>><?php echo esc_html($t->name); ?></a>
             <?php endforeach; ?>
           </div>
         </div>
         <div class="side-block filter">
           <h3>実行内容</h3>
           <div class="side-links">
-            <a href="<?php echo esc_url($all); ?>"<?php echo !$cur ? ' class="is-active"' : ''; ?>>ALL</a>
+            <a href="<?php echo esc_url($all); ?>"<?php echo $is_all ? ' class="is-active"' : ''; ?>>ALL</a>
             <?php foreach ($termB as $t) : ?>
-              <a href="<?php echo esc_url(get_term_link($t)); ?>"<?php echo ($cur_id === (int)$t->term_id) ? ' class="is-active"' : ''; ?>><?php echo esc_html($t->name); ?></a>
+              <a href="<?php echo esc_url(add_query_arg('jisseki_cat_b', $t->slug, $all)); ?>"<?php echo ($cur_b === $t->slug) ? ' class="is-active"' : ''; ?>><?php echo esc_html($t->name); ?></a>
             <?php endforeach; ?>
           </div>
         </div>
