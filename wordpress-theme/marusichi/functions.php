@@ -312,3 +312,15 @@ add_filter('body_class', function ($classes) {
 
 /* ---------- アーカイブ見出しの接頭辞（「月別:」「カテゴリー:」等）を除去 ---------- */
 add_filter('get_the_archive_title_prefix', '__return_empty_string');
+
+/* ---------- ファビコン（カスタマイザーのサイトアイコン未設定時に出力） ---------- */
+add_action('wp_head', function () {
+    if (function_exists('has_site_icon') && has_site_icon()) return;
+    $u = get_template_directory_uri();
+    echo "\n"
+        . '<link rel="icon" href="' . esc_url($u . '/favicon.ico') . '" sizes="any">' . "\n"
+        . '<link rel="icon" type="image/svg+xml" href="' . esc_url($u . '/favicon.svg') . '">' . "\n"
+        . '<link rel="icon" type="image/png" sizes="32x32" href="' . esc_url($u . '/favicon-32x32.png') . '">' . "\n"
+        . '<link rel="apple-touch-icon" href="' . esc_url($u . '/apple-touch-icon.png') . '">' . "\n"
+        . '<link rel="manifest" href="' . esc_url($u . '/site.webmanifest') . '">' . "\n";
+}, 5);
