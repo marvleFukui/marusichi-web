@@ -309,3 +309,6 @@ add_filter('body_class', function ($classes) {
     }
     return $classes;
 });
+
+/* ---------- アーカイブ見出しの接頭辞（「月別:」「カテゴリー:」等）を除去 ---------- */
+add_filter('get_the_archive_title_prefix', '__return_empty_string');
