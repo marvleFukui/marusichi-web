@@ -445,7 +445,7 @@ body.movie-open .movie-modal { display: flex; }
 .badge { display: inline-block; background: #3a3a3a; color: #fff; font-family: var(--en); font-weight: 700; font-size: 10px; letter-spacing: .12em; padding: 5px 14px; }
 
 /* WORKS/NEWS 一覧: サイドバー＋本体 */
-.layout-side { display: grid; grid-template-columns: 200px 1fr; gap: 56px; align-items: start; }
+.layout-side { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 56px; align-items: start; }
 .side-block { margin-bottom: 44px; }
 .side-block h3 { font-family: var(--en); font-weight: 700; font-size: 15px; letter-spacing: .1em; color: #2b2b2b; padding-bottom: 12px; border-bottom: 1px solid #333; margin-bottom: 16px; }
 .side-block .side-links a { display: block; font-size: 13px; color: #555; padding: 7px 0; }
@@ -456,7 +456,7 @@ body.movie-open .movie-modal { display: flex; }
 .archives .mo a { display: block; font-size: 12px; color: #666; padding: 4px 0 4px 14px; }
 
 /* WORKS グリッド（3列カード） */
-.works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 26px; }
+.works-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 26px; align-items: start; }
 .work-card .thumb { aspect-ratio: 4/3; overflow: hidden; }
 .work-card .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
 .work-card:hover .thumb img { transform: scale(1.05); }
