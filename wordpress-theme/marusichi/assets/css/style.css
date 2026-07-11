@@ -462,7 +462,7 @@ body.movie-open .movie-modal { display: flex; }
 .work-card:hover .thumb img { transform: scale(1.05); }
 /* タイトルが可変長でも崩れないよう縦積み（タイトル→READ MORE） */
 .work-card .meta { display: flex; flex-direction: column; align-items: flex-start; margin-top: 14px; gap: 8px; }
-.work-card .meta .ttl { font-size: 13.5px; color: #333; line-height: 1.6; }
+.work-card .meta .ttl { font-size: 13.5px; color: #333; line-height: 1.6; align-self: stretch; overflow-wrap: anywhere; word-break: break-word; }
 .work-card .meta .read { font-family: var(--en); font-weight: 700; font-size: 10px; letter-spacing: .1em; color: #333; white-space: nowrap; }
 
 /* NEWS メディアリスト（サムネ＋本文） */
