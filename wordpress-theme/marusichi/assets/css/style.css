@@ -506,11 +506,11 @@ body.movie-open .movie-modal { display: flex; }
   }
 
   /* SP: 2カラム。狭い列でタイトルとREAD MOREが重ならないよう縦積みに */
-  .works-grid { grid-template-columns: 1fr 1fr; gap: 26px 14px; align-items: start; }
+  .works-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 26px 14px; align-items: start; }
   .work-card .meta { flex-direction: column; align-items: flex-start; gap: 6px; margin-top: 10px; }
   .work-card .meta .ttl { font-size: 13px; line-height: 1.5; }
   .work-card .meta .read { font-size: 9.5px; color: #666; }
-  .news-media .item { grid-template-columns: 84px 1fr; gap: 18px; padding: 22px 0; }
+  .news-media .item { grid-template-columns: 84px minmax(0, 1fr); gap: 18px; padding: 22px 0; }
   .news-media h3 { font-size: 15px; }
   .news-media .head { flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
 }
